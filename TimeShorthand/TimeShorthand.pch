@@ -1,0 +1,21 @@
+//
+//  TimeShorthand.pch
+//  TimeShorthand
+//
+//  Created by liuhao on 2018/12/29.
+//  Copyright © 2018 liuhao. All rights reserved.
+//
+
+#ifndef TimeShorthand_pch
+#define TimeShorthand_pch
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+
+#import "TSConst.h"
+#import "Macro.h"
+
+#import "UIView+PFExtension.h"
+
+#endif /* TimeShorthand_pch */

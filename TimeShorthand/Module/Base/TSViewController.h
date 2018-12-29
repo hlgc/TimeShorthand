@@ -10,4 +10,9 @@
 
 @interface TSViewController : UIViewController
 
+- (void)setupInit;
+- (void)addSubviews;
+- (void)addConstraints;
+- (void)addNotification;
+
 @end

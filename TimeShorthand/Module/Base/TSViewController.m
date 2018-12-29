@@ -17,6 +17,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [self setupInit];
+    [self addSubviews];
+    [self addConstraints];
+    [self addNotification];}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:self.isHiddenNavBar animated:YES];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+}
+
+- (void)setupInit {
+    
+}
+
+- (void)addSubviews {
+}
+
+- (void)addConstraints {
+    
+}
+
+- (void)addNotification {
+    
+}
+
+- (void)addEmptyView {
+}
+
+#pragma mark - Getter
+- (BOOL)isHiddenNavBar {
+    return NO;
 }
 
 @end

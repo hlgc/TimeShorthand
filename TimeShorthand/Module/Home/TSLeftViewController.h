@@ -6,8 +6,8 @@
 //  Copyright © 2018 liuhao. All rights reserved.
 //
 
-#import "TSViewController.h"
+#import "TSTableViewController.h"
 
-@interface TSLeftViewController : TSViewController
+@interface TSLeftViewController : TSTableViewController
 
 @end

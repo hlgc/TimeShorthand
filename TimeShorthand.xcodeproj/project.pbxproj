@@ -12,6 +12,19 @@
 		C51CA0A921D718560077524E /* TSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0A821D718560077524E /* TSHomeViewController.m */; };
 		C51CA0AC21D718830077524E /* TSLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0AB21D718830077524E /* TSLeftViewController.m */; };
 		C51CA0AF21D719010077524E /* TSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0AE21D719010077524E /* TSNavigationController.m */; };
+		C51CA0B221D74E9F0077524E /* TSConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0B121D74E9F0077524E /* TSConst.m */; };
+		C51CA0B721D7506E0077524E /* TSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0B621D7506E0077524E /* TSTableViewController.m */; };
+		C51CA0B921D7507B0077524E /* TSTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51CA0B821D7507B0077524E /* TSTableViewController.xib */; };
+		C51CA0BD21D751250077524E /* TSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0BC21D751250077524E /* TSTableViewCell.m */; };
+		C51CA0D421D755320077524E /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0C321D755310077524E /* UIColor+Hex.m */; };
+		C51CA0D521D755320077524E /* NSDate+PFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0C421D755310077524E /* NSDate+PFExtension.m */; };
+		C51CA0D621D755320077524E /* NSMutableDictionary+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0C721D755310077524E /* NSMutableDictionary+Attributes.m */; };
+		C51CA0D721D755320077524E /* NSMutableAttributedString+Chain.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0C821D755310077524E /* NSMutableAttributedString+Chain.m */; };
+		C51CA0D821D755320077524E /* NSDate+PFAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0CB21D755310077524E /* NSDate+PFAdd.m */; };
+		C51CA0D921D755320077524E /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0CC21D755310077524E /* UIButton+ImageTitleSpacing.m */; };
+		C51CA0DB21D755320077524E /* UIView+PFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0CF21D755310077524E /* UIView+PFExtension.m */; };
+		C51CA0DC21D755320077524E /* UIFont+PFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0D021D755310077524E /* UIFont+PFExtension.m */; };
+		C51CA0DD21D755320077524E /* NSString+PFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C51CA0D321D755320077524E /* NSString+PFExtension.m */; };
 		C5243C0D21D4E96C00E4A6EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5243C0C21D4E96C00E4A6EB /* AppDelegate.m */; };
 		C5243C1521D4E96D00E4A6EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5243C1421D4E96D00E4A6EB /* Assets.xcassets */; };
 		C5243C1B21D4E96D00E4A6EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5243C1A21D4E96D00E4A6EB /* main.m */; };
@@ -45,6 +58,33 @@
 		C51CA0AB21D718830077524E /* TSLeftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSLeftViewController.m; sourceTree = "<group>"; };
 		C51CA0AD21D719010077524E /* TSNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSNavigationController.h; sourceTree = "<group>"; };
 		C51CA0AE21D719010077524E /* TSNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSNavigationController.m; sourceTree = "<group>"; };
+		C51CA0B021D74E9F0077524E /* TSConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConst.h; sourceTree = "<group>"; };
+		C51CA0B121D74E9F0077524E /* TSConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSConst.m; sourceTree = "<group>"; };
+		C51CA0B321D74EDB0077524E /* TimeShorthand.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeShorthand.pch; sourceTree = "<group>"; };
+		C51CA0B421D74F850077524E /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
+		C51CA0B521D7506E0077524E /* TSTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSTableViewController.h; sourceTree = "<group>"; };
+		C51CA0B621D7506E0077524E /* TSTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSTableViewController.m; sourceTree = "<group>"; };
+		C51CA0B821D7507B0077524E /* TSTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSTableViewController.xib; sourceTree = "<group>"; };
+		C51CA0BB21D751250077524E /* TSTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSTableViewCell.h; sourceTree = "<group>"; };
+		C51CA0BC21D751250077524E /* TSTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSTableViewCell.m; sourceTree = "<group>"; };
+		C51CA0C021D755310077524E /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
+		C51CA0C121D755310077524E /* UIFont+PFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+PFExtension.h"; sourceTree = "<group>"; };
+		C51CA0C221D755310077524E /* UIView+PFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PFExtension.h"; sourceTree = "<group>"; };
+		C51CA0C321D755310077524E /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		C51CA0C421D755310077524E /* NSDate+PFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PFExtension.m"; sourceTree = "<group>"; };
+		C51CA0C521D755310077524E /* NSString+PFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PFExtension.h"; sourceTree = "<group>"; };
+		C51CA0C721D755310077524E /* NSMutableDictionary+Attributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Attributes.m"; sourceTree = "<group>"; };
+		C51CA0C821D755310077524E /* NSMutableAttributedString+Chain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Chain.m"; sourceTree = "<group>"; };
+		C51CA0C921D755310077524E /* NSMutableDictionary+Attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Attributes.h"; sourceTree = "<group>"; };
+		C51CA0CA21D755310077524E /* NSMutableAttributedString+Chain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Chain.h"; sourceTree = "<group>"; };
+		C51CA0CB21D755310077524E /* NSDate+PFAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PFAdd.m"; sourceTree = "<group>"; };
+		C51CA0CC21D755310077524E /* UIButton+ImageTitleSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitleSpacing.m"; sourceTree = "<group>"; };
+		C51CA0CE21D755310077524E /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		C51CA0CF21D755310077524E /* UIView+PFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PFExtension.m"; sourceTree = "<group>"; };
+		C51CA0D021D755310077524E /* UIFont+PFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+PFExtension.m"; sourceTree = "<group>"; };
+		C51CA0D121D755310077524E /* NSDate+PFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PFExtension.h"; sourceTree = "<group>"; };
+		C51CA0D221D755320077524E /* NSDate+PFAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PFAdd.h"; sourceTree = "<group>"; };
+		C51CA0D321D755320077524E /* NSString+PFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PFExtension.m"; sourceTree = "<group>"; };
 		C5243C0821D4E96C00E4A6EB /* TimeShorthand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeShorthand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5243C0B21D4E96C00E4A6EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C5243C0C21D4E96C00E4A6EB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -109,6 +149,9 @@
 		C51CA0A021D717F50077524E /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				C51CA0B021D74E9F0077524E /* TSConst.h */,
+				C51CA0B121D74E9F0077524E /* TSConst.m */,
+				C51CA0B421D74F850077524E /* Macro.h */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -116,8 +159,12 @@
 		C51CA0A121D717FD0077524E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				C51CA0BA21D751100077524E /* View */,
 				C51CA0A421D718210077524E /* TSViewController.h */,
 				C51CA0A521D718210077524E /* TSViewController.m */,
+				C51CA0B521D7506E0077524E /* TSTableViewController.h */,
+				C51CA0B621D7506E0077524E /* TSTableViewController.m */,
+				C51CA0B821D7507B0077524E /* TSTableViewController.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -140,6 +187,48 @@
 				C51CA0AB21D718830077524E /* TSLeftViewController.m */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		C51CA0BA21D751100077524E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C51CA0BB21D751250077524E /* TSTableViewCell.h */,
+				C51CA0BC21D751250077524E /* TSTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C51CA0BE21D755310077524E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C51CA0C621D755310077524E /* Chain */,
+				C51CA0D221D755320077524E /* NSDate+PFAdd.h */,
+				C51CA0CB21D755310077524E /* NSDate+PFAdd.m */,
+				C51CA0D121D755310077524E /* NSDate+PFExtension.h */,
+				C51CA0C421D755310077524E /* NSDate+PFExtension.m */,
+				C51CA0C521D755310077524E /* NSString+PFExtension.h */,
+				C51CA0D321D755320077524E /* NSString+PFExtension.m */,
+				C51CA0C021D755310077524E /* UIButton+ImageTitleSpacing.h */,
+				C51CA0CC21D755310077524E /* UIButton+ImageTitleSpacing.m */,
+				C51CA0CE21D755310077524E /* UIColor+Hex.h */,
+				C51CA0C321D755310077524E /* UIColor+Hex.m */,
+				C51CA0C121D755310077524E /* UIFont+PFExtension.h */,
+				C51CA0D021D755310077524E /* UIFont+PFExtension.m */,
+				C51CA0C221D755310077524E /* UIView+PFExtension.h */,
+				C51CA0CF21D755310077524E /* UIView+PFExtension.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		C51CA0C621D755310077524E /* Chain */ = {
+			isa = PBXGroup;
+			children = (
+				C51CA0C721D755310077524E /* NSMutableDictionary+Attributes.m */,
+				C51CA0C821D755310077524E /* NSMutableAttributedString+Chain.m */,
+				C51CA0C921D755310077524E /* NSMutableDictionary+Attributes.h */,
+				C51CA0CA21D755310077524E /* NSMutableAttributedString+Chain.h */,
+			);
+			path = Chain;
 			sourceTree = "<group>";
 		};
 		C5243BFF21D4E96B00E4A6EB = {
@@ -167,6 +256,7 @@
 		C5243C0A21D4E96C00E4A6EB /* TimeShorthand */ = {
 			isa = PBXGroup;
 			children = (
+				C51CA0BE21D755310077524E /* Category */,
 				C51CA0A021D717F50077524E /* Config */,
 				C51CA09F21D717C60077524E /* Module */,
 				C5243C0B21D4E96C00E4A6EB /* AppDelegate.h */,
@@ -174,6 +264,7 @@
 				C5243C1421D4E96D00E4A6EB /* Assets.xcassets */,
 				C5243C1921D4E96D00E4A6EB /* Info.plist */,
 				C5243C1A21D4E96D00E4A6EB /* main.m */,
+				C51CA0B321D74EDB0077524E /* TimeShorthand.pch */,
 			);
 			path = TimeShorthand;
 			sourceTree = "<group>";
@@ -311,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C51CA0B921D7507B0077524E /* TSTableViewController.xib in Resources */,
 				C5243C1521D4E96D00E4A6EB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,9 +469,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C51CA0B721D7506E0077524E /* TSTableViewController.m in Sources */,
+				C51CA0DB21D755320077524E /* UIView+PFExtension.m in Sources */,
+				C51CA0D421D755320077524E /* UIColor+Hex.m in Sources */,
 				C51CA0A921D718560077524E /* TSHomeViewController.m in Sources */,
+				C51CA0B221D74E9F0077524E /* TSConst.m in Sources */,
+				C51CA0D721D755320077524E /* NSMutableAttributedString+Chain.m in Sources */,
+				C51CA0DD21D755320077524E /* NSString+PFExtension.m in Sources */,
+				C51CA0D521D755320077524E /* NSDate+PFExtension.m in Sources */,
+				C51CA0D821D755320077524E /* NSDate+PFAdd.m in Sources */,
+				C51CA0DC21D755320077524E /* UIFont+PFExtension.m in Sources */,
 				C5243C1B21D4E96D00E4A6EB /* main.m in Sources */,
+				C51CA0D921D755320077524E /* UIButton+ImageTitleSpacing.m in Sources */,
 				C5243C0D21D4E96C00E4A6EB /* AppDelegate.m in Sources */,
+				C51CA0BD21D751250077524E /* TSTableViewCell.m in Sources */,
+				C51CA0D621D755320077524E /* NSMutableDictionary+Attributes.m in Sources */,
 				C51CA0A621D718210077524E /* TSViewController.m in Sources */,
 				C51CA0AF21D719010077524E /* TSNavigationController.m in Sources */,
 				C51CA0AC21D718830077524E /* TSLeftViewController.m in Sources */,
@@ -535,8 +639,11 @@
 			baseConfigurationReference = F1B83A6D358BD21602EF6014 /* Pods-TimeShorthand.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PLAHU2L75Q;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TimeShorthand/TimeShorthand.pch";
 				INFOPLIST_FILE = TimeShorthand/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -553,8 +660,11 @@
 			baseConfigurationReference = DDC7019C7DBAA90C1FBED7A1 /* Pods-TimeShorthand.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PLAHU2L75Q;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TimeShorthand/TimeShorthand.pch";
 				INFOPLIST_FILE = TimeShorthand/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
