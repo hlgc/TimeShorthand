@@ -23,7 +23,7 @@
     // 1.设置导航条的背景
     //导航条颜色
     [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     // 2.设置栏的字体
 //    [navBar setTitleTextAttributes:[NSMutableDictionary dictionary].pf_font([UIFont pf_PingFangSC_MediumWithSize:20.0f]).pf_color([UIColor pf_colorWithHex:0x404345])];
 //    [[UIBarButtonItem appearance] setTitleTextAttributes:[NSMutableDictionary dictionary].pf_font([UIFont systemFontOfSize:0.1]).pf_color([UIColor clearColor]) forState:UIControlStateNormal];

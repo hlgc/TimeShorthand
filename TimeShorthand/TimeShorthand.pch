@@ -6,6 +6,7 @@
 //  Copyright © 2018 liuhao. All rights reserved.
 //
 
+#ifdef __OBJC__
 #ifndef TimeShorthand_pch
 #define TimeShorthand_pch
 
@@ -17,5 +18,7 @@
 #import "Macro.h"
 
 #import "UIView+PFExtension.h"
-
+#import "UIFont+PFExtension.h"
+#import "UIColor+Hex.h"
 #endif /* TimeShorthand_pch */
+#endif
