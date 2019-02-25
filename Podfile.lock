@@ -9,6 +9,7 @@ PODS:
     - AVOSCloudIM/_NOARC (= 11.4.4)
   - AVOSCloudIM/_NOARC (11.4.4):
     - AVOSCloud (= 11.4.4)
+  - IQKeyboardManager (6.2.0)
   - JCore (1.2.5)
   - JPush (3.1.1.1):
     - JCore (~> 1.2.5)
@@ -30,6 +31,13 @@ PODS:
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
   - SVProgressHUD (2.2.5)
+  - UMengUShare/Core (6.4.8.2):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.8.2)
+  - UMengUShare/Social/ReducedQQ (6.4.8.2):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedWeChat (6.4.8.2):
+    - UMengUShare/Core
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -37,18 +45,22 @@ PODS:
 DEPENDENCIES:
   - AVOSCloud
   - AVOSCloudIM
+  - IQKeyboardManager
   - JPush
   - Masonry
   - MBProgressHUD
   - MMDrawerController
   - SDWebImage
   - SVProgressHUD
+  - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedWeChat
   - YYKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AVOSCloud
     - AVOSCloudIM
+    - IQKeyboardManager
     - JCore
     - JPush
     - Masonry
@@ -56,11 +68,13 @@ SPEC REPOS:
     - MMDrawerController
     - SDWebImage
     - SVProgressHUD
+    - UMengUShare
     - YYKit
 
 SPEC CHECKSUMS:
   AVOSCloud: c3d6ce6d387d7e40c7c0fe4087c6ad5192620f47
   AVOSCloudIM: e3227ad97ee9d0f8ec059b0a17d8dc9c2ec0ba49
+  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JCore: 14706de2640b25fb77dbd02332696491407f37c9
   JPush: 25dd9013fbe106082c14f9f30a82364ee98852fb
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -68,8 +82,9 @@ SPEC CHECKSUMS:
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 33f4359340e0fe4e6103d5ab25858e4c00284f3e
+PODFILE CHECKSUM: 29c7c604f292a9671d8f9a7a066947efb901c280
 
 COCOAPODS: 1.5.3

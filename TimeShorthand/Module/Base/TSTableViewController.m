@@ -7,6 +7,7 @@
 //
 
 #import "TSTableViewController.h" 
+#import "TSTableViewHeaderFooterView.h"
 
 @interface TSTableViewController ()
 
@@ -19,14 +20,10 @@
     
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    self.tableViewTop.constant = [UIView safeAreaTop];
-    self.tableViewBottom.constant = [UIView safeAreaBottom];
-}
-
 - (void)setupInit {
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerClass:TSTableViewHeaderFooterView.class forHeaderFooterViewReuseIdentifier:TSTableViewHeaderFooterView.identifer];
 }
 
 
@@ -37,6 +34,35 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [TSTableViewCell cellWithTableView:tableView];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return .0000001f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return .00000001f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [TSTableViewHeaderFooterView viewWithTableView:tableView];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return [TSTableViewHeaderFooterView viewWithTableView:tableView];
+}
+
+#pragma mark - Getter
+- (NSMutableArray *)datas {
+    if (_datas) {
+        return _datas;
+    }
+    _datas = @[].mutableCopy;
+    return _datas;
 }
 
 @end

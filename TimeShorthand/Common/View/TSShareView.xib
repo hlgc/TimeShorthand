@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TSShareView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7EZ-tO-GS3">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="onTouchgView:" destination="iN0-l3-epB" eventType="touchUpInside" id="hvP-V8-yZk"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sra-2G-ufH" userLabel="content">
+                    <rect key="frame" x="0.0" y="667" width="375" height="100"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vL4-kB-qPY">
+                            <rect key="frame" x="20" y="0.0" width="335" height="100"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcU-81-Ywm">
+                                    <rect key="frame" x="0.0" y="0.0" width="84" height="100"/>
+                                    <state key="normal" image="yk_publishCompleted_share_weChat"/>
+                                    <connections>
+                                        <action selector="onTouchShareButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="et5-wn-D7m"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qn7-oM-hw2">
+                                    <rect key="frame" x="84" y="0.0" width="83.5" height="100"/>
+                                    <state key="normal" image="yk_publishCompleted_share_friend"/>
+                                    <connections>
+                                        <action selector="onTouchShareButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="p7K-hR-gEH"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWj-UG-4Az">
+                                    <rect key="frame" x="167.5" y="0.0" width="84" height="100"/>
+                                    <state key="normal" image="yk_publishCompleted_share_qq"/>
+                                    <connections>
+                                        <action selector="onTouchShareButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="9p7-69-6PS"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQq-NO-aSY">
+                                    <rect key="frame" x="251.5" y="0.0" width="83.5" height="100"/>
+                                    <state key="normal" image="yk_publishCompleted_share_save"/>
+                                    <connections>
+                                        <action selector="onTouchShareButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Rr2-8t-4aQ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="qn7-oM-hw2" firstAttribute="top" secondItem="vL4-kB-qPY" secondAttribute="top" id="5Vt-hH-dyq"/>
+                                <constraint firstItem="KcU-81-Ywm" firstAttribute="top" secondItem="vL4-kB-qPY" secondAttribute="top" id="AlT-C4-2jB"/>
+                                <constraint firstAttribute="bottom" secondItem="vWj-UG-4Az" secondAttribute="bottom" id="BRI-ke-4Dc"/>
+                                <constraint firstItem="KcU-81-Ywm" firstAttribute="leading" secondItem="vL4-kB-qPY" secondAttribute="leading" id="CQ4-yU-Sth"/>
+                                <constraint firstItem="vWj-UG-4Az" firstAttribute="leading" secondItem="qn7-oM-hw2" secondAttribute="trailing" id="GPC-I2-Zk5"/>
+                                <constraint firstAttribute="trailing" secondItem="UQq-NO-aSY" secondAttribute="trailing" id="JOg-kH-t4j"/>
+                                <constraint firstItem="vWj-UG-4Az" firstAttribute="width" secondItem="UQq-NO-aSY" secondAttribute="width" id="NQG-Gc-6Hi"/>
+                                <constraint firstItem="qn7-oM-hw2" firstAttribute="width" secondItem="vWj-UG-4Az" secondAttribute="width" id="NUK-AI-fx4"/>
+                                <constraint firstItem="vWj-UG-4Az" firstAttribute="top" secondItem="vL4-kB-qPY" secondAttribute="top" id="P38-l1-z1J"/>
+                                <constraint firstAttribute="bottom" secondItem="KcU-81-Ywm" secondAttribute="bottom" id="XTT-dh-Vbw"/>
+                                <constraint firstAttribute="bottom" secondItem="qn7-oM-hw2" secondAttribute="bottom" id="cSu-NE-vYB"/>
+                                <constraint firstItem="UQq-NO-aSY" firstAttribute="leading" secondItem="vWj-UG-4Az" secondAttribute="trailing" id="dAM-az-exG"/>
+                                <constraint firstAttribute="bottom" secondItem="UQq-NO-aSY" secondAttribute="bottom" id="jW1-Nm-hF4"/>
+                                <constraint firstItem="UQq-NO-aSY" firstAttribute="top" secondItem="vL4-kB-qPY" secondAttribute="top" id="kZ6-iR-eXi"/>
+                                <constraint firstItem="qn7-oM-hw2" firstAttribute="leading" secondItem="KcU-81-Ywm" secondAttribute="trailing" id="tiU-xd-Upw"/>
+                                <constraint firstItem="KcU-81-Ywm" firstAttribute="width" secondItem="qn7-oM-hw2" secondAttribute="width" id="ujb-q0-3gd"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="vL4-kB-qPY" firstAttribute="top" secondItem="Sra-2G-ufH" secondAttribute="top" id="9d6-FY-pro"/>
+                        <constraint firstAttribute="trailing" secondItem="vL4-kB-qPY" secondAttribute="trailing" constant="20" id="LKj-ma-UrB"/>
+                        <constraint firstAttribute="height" constant="100" id="ez3-Ez-GgN"/>
+                        <constraint firstAttribute="bottom" secondItem="vL4-kB-qPY" secondAttribute="bottom" id="gi6-rY-IT5"/>
+                        <constraint firstItem="vL4-kB-qPY" firstAttribute="leading" secondItem="Sra-2G-ufH" secondAttribute="leading" constant="20" id="pkV-tA-zqx"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="7EZ-tO-GS3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1A7-cW-tn9"/>
+                <constraint firstItem="Sra-2G-ufH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9rs-bt-BrO"/>
+                <constraint firstAttribute="bottom" secondItem="7EZ-tO-GS3" secondAttribute="bottom" id="AMB-a3-mPL"/>
+                <constraint firstAttribute="trailing" secondItem="Sra-2G-ufH" secondAttribute="trailing" id="BkH-ep-GQT"/>
+                <constraint firstItem="7EZ-tO-GS3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FD1-yp-9BF"/>
+                <constraint firstAttribute="bottom" secondItem="Sra-2G-ufH" secondAttribute="bottom" constant="-100" id="LV8-XP-dn3"/>
+                <constraint firstAttribute="trailing" secondItem="7EZ-tO-GS3" secondAttribute="trailing" id="jr7-xp-bpv"/>
+            </constraints>
+            <connections>
+                <outlet property="bgView" destination="7EZ-tO-GS3" id="Rnh-dc-Z7r"/>
+                <outlet property="contenBottom" destination="LV8-XP-dn3" id="ZF8-4q-BEQ"/>
+                <outlet property="contentViewHeight" destination="ez3-Ez-GgN" id="tX6-eG-ar4"/>
+            </connections>
+            <point key="canvasLocation" x="39.200000000000003" y="46.326836581709152"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="yk_publishCompleted_share_friend" width="45.5" height="45"/>
+        <image name="yk_publishCompleted_share_qq" width="45.5" height="45"/>
+        <image name="yk_publishCompleted_share_save" width="45.5" height="45"/>
+        <image name="yk_publishCompleted_share_weChat" width="45.5" height="45"/>
+    </resources>
+</document>

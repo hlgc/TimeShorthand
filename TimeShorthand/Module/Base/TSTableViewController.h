@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTop;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottom;
+@property (nonatomic, strong) NSMutableArray *datas;
 
 @end
 
