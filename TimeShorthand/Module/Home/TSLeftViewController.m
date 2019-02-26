@@ -26,8 +26,6 @@
 - (instancetype)init {
     if (self = [super initWithNibName:@"TSTableViewController" bundle:nil]) {
         // 初始化
-//        [self.tableView registerClass:TSLeftItemCell.class forCellReuseIdentifier:TSLeftItemCell.identifer];
-        
     }
     return self;
 }
@@ -39,13 +37,14 @@
     
     _headView = [TSLeftHeadView viewFromXib];
     _headView.height = 100.0f;
+    _headView.clipsToBounds = YES;
     self.tableView.tableHeaderView = _headView;
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    self.tableViewTop.constant = [UIView safeAreaTop];
-    self.tableViewBottom.constant = [UIView safeAreaBottom];
+//    self.tableViewTop.constant = [UIView safeAreaTop];
+//    self.tableViewBottom.constant = [UIView safeAreaBottom];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate

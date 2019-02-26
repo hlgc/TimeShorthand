@@ -117,7 +117,7 @@
      
      微信AppKey所属账号：kanchangxin@yueke100.net
      */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx4e346d8eabc52cb9" appSecret:@"2590920da478cf9d96214aa870aa4361" redirectURL:nil];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx406264235aadf29c" appSecret:@"05ab3a52d30367e196f1ca504bd3c49f" redirectURL:nil];
     /*
      * 移除相应平台的分享，如微信收藏
      */

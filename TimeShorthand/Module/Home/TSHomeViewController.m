@@ -12,6 +12,9 @@
 #import "TSHomeDateView.h"
 #import "UIButton+ImageTitleSpacing.h"
 #import "TSShareView.h"
+#import "TSDateTool.h"
+#import "TSEventListController.h"
+#import "TSEventModel.h"
 
 @interface TSHomeViewController ()
 
@@ -28,6 +31,9 @@
 
 /// 能做什么事
 @property (nonatomic, copy) NSArray <UIButton *>*events;
+
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSTimer *dateTimer;
 
 @end
 
@@ -47,8 +53,35 @@
     _nameLabel.font = [UIFont pf_PingFangSC_RegularWithSize:18.0f];
     [self.view addSubview:_nameLabel];
     
+    NSDateFormatter *df = [TSDateTool dateFormatter];
+    [df setDateFormat:@"yyyy/MM/dd"];
+    NSString *dateStr = [df stringFromDate:[NSDate dateWithTimeIntervalSince1970:TSUserTool.sharedInstance.user.birthday.integerValue]];
+    NSTimeInterval dateDiff = [[df dateFromString:dateStr] timeIntervalSinceNow];
+    double age = fabs(dateDiff/(60*60*24))/365;
+    NSLog(@"年龄是:%@",[NSString stringWithFormat:@"%.10f岁",age]);
+    
+    NSString *year = [dateStr substringWithRange:NSMakeRange(0, 4)];
+    NSString *month = [dateStr substringWithRange:NSMakeRange(5, 2)];
+    NSString *day = [dateStr substringWithRange:NSMakeRange(dateStr.length-2, 2)];
+    NSLog(@"出生于%@年%@月%@日", year, month, day);
+    
+    NSDate *nowDate = [NSDate date];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierISO8601];
+    NSDateComponents *compomemts = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekday | NSCalendarUnitDay fromDate:nowDate];
+    NSInteger nowYear = compomemts.year;
+    NSInteger nowMonth = compomemts.month;
+    NSInteger nowDay = compomemts.day;
+    NSLog(@"今天是%ld年%ld月%ld日", nowYear, nowMonth, nowDay);
+    
+    // 计算年龄
+    NSInteger userAge = nowYear - year.intValue - 1;
+    if ((nowMonth > month.intValue) || (nowMonth == month.intValue && nowDay >= day.intValue)) {
+        userAge++;
+    }
+    NSLog(@"用户年龄是%ld",userAge);
+    
     _ageButton = [UILabel new];
-    _ageButton.text = @"你23.938998989389岁了";
+    _ageButton.text = [NSString stringWithFormat:@"你%.10f岁了",age];
     _ageButton.textColor = [UIColor blackColor];
     _ageButton.font = [UIFont pf_PingFangSC_RegularWithSize:18.0f];
     [self.view addSubview:_ageButton];
@@ -74,6 +107,9 @@
     _bottomLine = [UIView new];
     _bottomLine.backgroundColor = COLOR_LINE_GREY;
     [self.view addSubview:_bottomLine];
+    
+    [self timer];
+    [self dateTimer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -162,11 +198,59 @@
     }];
 }
 
+/// 点击事件
 - (void)onTouchDateView:(UIButton *)button {
-    
+    TSEventListController *listVC = [TSEventListController new];
+    listVC.didCompleteBlcok = ^(TSEventModel *model) {
+        [button setTitle:model.name forState:UIControlStateNormal];
+        [button pf_layoutButtonWithEdgeInsetsStyle:PFButtonEdgeInsetsStyleRight imageTitleSpace:.0f];
+    };
+    [self.navigationController pushViewController:listVC animated:YES];
 }
 
 #pragma mark - Private
+- (void)setInfo {
+    NSDateFormatter *df = [TSDateTool dateFormatter];
+    [df setDateFormat:@"yyyy/MM/dd"];
+    NSString *dateStr = [df stringFromDate:[NSDate dateWithTimeIntervalSince1970:TSUserTool.sharedInstance.user.birthday.integerValue]];
+    NSTimeInterval dateDiff = [[df dateFromString:dateStr] timeIntervalSinceNow];
+    double age = fabs(dateDiff / (60 * 60 * 24)) / 365;
+    _ageButton.text = [NSString stringWithFormat:@"你%.10f岁了",age];
+}
+
+- (void)setDate {
+    NSDateFormatter *df = [TSDateTool dateFormatter];
+    [df setDateFormat:@"yyyy/MM/dd"];
+    NSString *dateStr = [df stringFromDate:[NSDate dateWithTimeIntervalSince1970:TSUserTool.sharedInstance.user.birthday.integerValue]];
+    NSTimeInterval dateDiff = [[df dateFromString:dateStr] timeIntervalSinceNow];
+    NSInteger age = fabs(dateDiff / (60 * 60 * 24)) / 365;
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970] - TSUserTool.sharedInstance.user.birthday.doubleValue;
+    [self.dates enumerateObjectsUsingBlock:^(TSHomeDateView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        switch (idx) {
+            case 0:
+                obj.titleLabel.text = [NSString stringWithFormat:@"%ld", age];
+                break;
+            case 1:
+                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", time / 60 / 60 / 24 / 30];
+                break;
+            case 2:
+                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", time / 60 / 60 / 24 / 7];
+                break;
+            case 3:
+                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", time / 60 / 60 / 24];
+                break;
+            case 4:
+                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", time / 60 / 60];
+                break;
+            case 5:
+                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", time / 60];
+                break;
+            default:
+                break;
+        }
+    }];
+}
+
 - (void)savePhotoToAlbum {
     //保存图片到本地
     [LHHudTool showLoadingWithMessage:@"保存中"];
@@ -191,7 +275,7 @@
     }
     CGFloat W = (ScreenWidth - 40) / 3;
     CGFloat H = W * .45f;
-    NSArray *tempDatas = @[@"年",@"月",@"周",@"时",@"分",@"秒"];
+    NSArray *tempDatas = @[@"年",@"月",@"周",@"日",@"时",@"分"];
     NSMutableArray *tempDates = @[].mutableCopy;
     [tempDatas enumerateObjectsUsingBlock:^(NSString *string, NSUInteger idx, BOOL * _Nonnull stop) {
         TSHomeDateView *dateView = [TSHomeDateView new];
@@ -209,13 +293,27 @@
         return _events;
     }
     CGFloat W = (ScreenWidth - 40) / 2;
-    NSArray *tempDatas = @[@"睡觉 12344次",@"做澡 12344次",@"旅行 12344次",@"听歌 12344次"];
+    NSInteger count = TSUserTool.sharedInstance.user.surplusLife;
+    TSEventModel *model1 = [TSEventModel new];
+    model1.name = [NSString stringWithFormat:@"睡觉 %zd次", count];
+    model1.selected = YES;
+    
+    TSEventModel *model2 = [TSEventModel new];
+    model2.name = [NSString stringWithFormat:@"洗澡 %zd次", count];
+    
+    TSEventModel *model3 = [TSEventModel new];
+    model3.name = [NSString stringWithFormat:@"旅行 %zd次", count/182];
+    
+    TSEventModel *model4 = [TSEventModel new];
+    model4.name = [NSString stringWithFormat:@"看书 %zd次", count];
+    
+    NSArray *tempDatas = @[model1,model2,model3,model4];
     NSMutableArray *tempDates = @[].mutableCopy;
-    [tempDatas enumerateObjectsUsingBlock:^(NSString *string, NSUInteger idx, BOOL * _Nonnull stop) {
+    [tempDatas enumerateObjectsUsingBlock:^(TSEventModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *dateView = [UIButton new];
         dateView.titleLabel.font = [UIFont pf_PingFangSC_LightWithSize:14.0f];
         [dateView setTitleColor:COLOR_FONT_BLACK forState:UIControlStateNormal];
-        [dateView setTitle:string forState:UIControlStateNormal];
+        [dateView setTitle:model.name forState:UIControlStateNormal];
         [dateView setImage:[UIImage imageNamed:@"arrow"] forState:UIControlStateNormal];
         [dateView addTarget:self action:@selector(onTouchDateView:) forControlEvents:UIControlEventTouchUpInside];
         dateView.size = CGSizeMake(W, 30);
@@ -225,6 +323,27 @@
     }];
     _events = tempDates.copy;
     return _events;
+}
+
+- (NSTimer *)timer {
+    if (_timer) {
+        return _timer;
+    }
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setInfo) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    [self setInfo];
+    return _timer;
+}
+
+
+- (NSTimer *)dateTimer {
+    if (_dateTimer) {
+        return _dateTimer;
+    }
+    _dateTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setDate) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:_dateTimer forMode:NSRunLoopCommonModes];
+    [self setDate];
+    return _dateTimer;
 }
 
 @end

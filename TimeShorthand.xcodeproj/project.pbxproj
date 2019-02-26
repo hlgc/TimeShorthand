@@ -102,6 +102,10 @@
 		C563F3162223D97C00E17118 /* TSSetPropertyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C563F3142223D97C00E17118 /* TSSetPropertyController.m */; };
 		C563F3172223D97C00E17118 /* TSSetPropertyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C563F3152223D97C00E17118 /* TSSetPropertyController.xib */; };
 		C563F31A2223DEFA00E17118 /* TSBaseLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C563F3192223DEFA00E17118 /* TSBaseLoginController.m */; };
+		C581689C2224E8CE0038FB09 /* TSEventListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C581689B2224E8CE0038FB09 /* TSEventListController.m */; };
+		C58168A02224ECFF0038FB09 /* TSEventListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C581689E2224ECFF0038FB09 /* TSEventListCell.m */; };
+		C58168A322250A430038FB09 /* TSEventListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C58168A222250A430038FB09 /* TSEventListCell.xib */; };
+		C58168A622250BA20038FB09 /* TSEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C58168A522250BA20038FB09 /* TSEventModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,6 +308,13 @@
 		C563F3152223D97C00E17118 /* TSSetPropertyController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSSetPropertyController.xib; sourceTree = "<group>"; };
 		C563F3182223DEFA00E17118 /* TSBaseLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSBaseLoginController.h; sourceTree = "<group>"; };
 		C563F3192223DEFA00E17118 /* TSBaseLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSBaseLoginController.m; sourceTree = "<group>"; };
+		C581689A2224E8CE0038FB09 /* TSEventListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSEventListController.h; sourceTree = "<group>"; };
+		C581689B2224E8CE0038FB09 /* TSEventListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSEventListController.m; sourceTree = "<group>"; };
+		C581689D2224ECFF0038FB09 /* TSEventListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSEventListCell.h; sourceTree = "<group>"; };
+		C581689E2224ECFF0038FB09 /* TSEventListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSEventListCell.m; sourceTree = "<group>"; };
+		C58168A222250A430038FB09 /* TSEventListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSEventListCell.xib; sourceTree = "<group>"; };
+		C58168A422250BA20038FB09 /* TSEventModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSEventModel.h; sourceTree = "<group>"; };
+		C58168A522250BA20038FB09 /* TSEventModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSEventModel.m; sourceTree = "<group>"; };
 		DDC7019C7DBAA90C1FBED7A1 /* Pods-TimeShorthand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeShorthand.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand.release.xcconfig"; sourceTree = "<group>"; };
 		E9BB8888A0B538727A35A69E /* libPods-TimeShorthand.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeShorthand.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B83A6D358BD21602EF6014 /* Pods-TimeShorthand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeShorthand.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand.debug.xcconfig"; sourceTree = "<group>"; };
@@ -410,6 +421,8 @@
 				C51CA0A821D718560077524E /* TSHomeViewController.m */,
 				C51CA0AA21D718830077524E /* TSLeftViewController.h */,
 				C51CA0AB21D718830077524E /* TSLeftViewController.m */,
+				C581689A2224E8CE0038FB09 /* TSEventListController.h */,
+				C581689B2224E8CE0038FB09 /* TSEventListController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -667,6 +680,9 @@
 				C563F29D221FF1A100E17118 /* TSLeftItemCell.h */,
 				C563F29E221FF1A100E17118 /* TSLeftItemCell.m */,
 				C563F2A022213CC900E17118 /* TSLeftItemCell.xib */,
+				C581689D2224ECFF0038FB09 /* TSEventListCell.h */,
+				C581689E2224ECFF0038FB09 /* TSEventListCell.m */,
+				C58168A222250A430038FB09 /* TSEventListCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -674,6 +690,8 @@
 		C563F2A222213DD200E17118 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C58168A422250BA20038FB09 /* TSEventModel.h */,
+				C58168A522250BA20038FB09 /* TSEventModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -917,6 +935,7 @@
 				C563F278221EEFC800E17118 /* xl_clock_minuteHand.png in Resources */,
 				C563F292221FE9B400E17118 /* TSLeftHeadView.xib in Resources */,
 				C563F276221EEFC800E17118 /* xl_clock_hourHand_shadow.png in Resources */,
+				C58168A322250A430038FB09 /* TSEventListCell.xib in Resources */,
 				C563F2DE2221591100E17118 /* TSShareView.xib in Resources */,
 				C563F285221EF75900E17118 /* xl_clock_hour_12.png in Resources */,
 				C5243C1521D4E96D00E4A6EB /* Assets.xcassets in Resources */,
@@ -1005,6 +1024,7 @@
 				C563F267221EEFC800E17118 /* POPBasicAnimation.mm in Sources */,
 				C563F3032223C9D000E17118 /* TSLoginTextField.m in Sources */,
 				C563F270221EEFC800E17118 /* XLClockHand.m in Sources */,
+				C58168A622250BA20038FB09 /* TSEventModel.m in Sources */,
 				C563F30F2223CECF00E17118 /* TSUserTool.m in Sources */,
 				C51CA0B721D7506E0077524E /* TSTableViewController.m in Sources */,
 				C563F26D221EEFC800E17118 /* POPLayerExtras.mm in Sources */,
@@ -1029,6 +1049,7 @@
 				C563F31A2223DEFA00E17118 /* TSBaseLoginController.m in Sources */,
 				C563F29F221FF1A100E17118 /* TSLeftItemCell.m in Sources */,
 				C51CA0D821D755320077524E /* NSDate+PFAdd.m in Sources */,
+				C581689C2224E8CE0038FB09 /* TSEventListController.m in Sources */,
 				C563F28A221FA47700E17118 /* TSView.m in Sources */,
 				C51CA0DC21D755320077524E /* UIFont+PFExtension.m in Sources */,
 				C5243C1B21D4E96D00E4A6EB /* main.m in Sources */,
@@ -1057,6 +1078,7 @@
 				C563F2FA2223BF1200E17118 /* TSNotiSwitchView.m in Sources */,
 				C563F26C221EEFC800E17118 /* POPAnimationEvent.mm in Sources */,
 				C563F2EB2222BB6100E17118 /* TSPersonalCenterController.m in Sources */,
+				C58168A02224ECFF0038FB09 /* TSEventListCell.m in Sources */,
 				C563F25F221EEFC800E17118 /* POPAnimationTracer.mm in Sources */,
 				C563F269221EEFC800E17118 /* POPAnimator.mm in Sources */,
 				C563F298221FEE5B00E17118 /* UIView+Xib.m in Sources */,

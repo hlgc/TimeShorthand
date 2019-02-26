@@ -40,6 +40,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     [_titleLabel sizeToFit];
+    _subTitleLabel.width = _titleLabel.width = self.width;
     [_subTitleLabel sizeToFit];
     _subTitleLabel.centerX = _titleLabel.centerX = self.width * .5f;
     _titleLabel.bottom = self.height * .5f - 2.5f;
