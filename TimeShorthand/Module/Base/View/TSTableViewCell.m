@@ -34,6 +34,9 @@
     [self setupInit];
     [self addSubviews];
     [self addConstraints];
+    [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        SAFE_BLOCK(self.didClickSelfBlock);
+    }]];
 }
 
 - (void)setupInit {

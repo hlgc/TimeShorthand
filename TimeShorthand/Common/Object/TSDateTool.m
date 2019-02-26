@@ -30,56 +30,6 @@
  **/
 + (NSString *)formateDateWithTimestamp:(NSString *)timestamp {
     
-    @try {
-        //实例化一个NSDateFormatter对象
-        NSDateFormatter *dateFormatter = [self dateFormatter];
-        
-        NSDate *nowDate = [NSDate date];
-        
-        /////  将需要转换的时间转换成 NSDate 对象
-        NSDate *needFormatDate = [NSDate dateWithTimeIntervalSince1970:[timestamp doubleValue]];
-        /////  取当前时间和转换时间两个日期对象的时间间隔
-        /////  这里的NSTimeInterval 并不是对象，是基本型，其实是double类型，是由c定义的:  typedef double NSTimeInterval;
-        NSTimeInterval time = [nowDate timeIntervalSinceDate:needFormatDate];
-        
-        //// 再然后，把间隔的秒数折算成天数和小时数：
-        
-        NSString *dateStr = @"";
-        
-        if (time <= 60) {  //// 1分钟以内的
-            dateStr = @"刚刚";
-        } else if (time <= 60*60) {  ////  一个小时以内的
-            int mins = time/60;
-            dateStr = [NSString stringWithFormat:@"%d分钟前", mins];
-        } else if (needFormatDate.isToday) {//今天
-            [dateFormatter setDateFormat:@"HH:mm"];
-            //// 在同一天
-            int hours = time/(60*60);
-            dateStr = [NSString stringWithFormat:@"%d小时前", hours];
-        } else if (needFormatDate.isYesterday) {
-            dateStr = @"昨天";
-        } else if (needFormatDate.isBeforeYesterday) {
-            dateStr = @"前天";
-        } else {
-            
-            [dateFormatter setDateFormat:@"yyyy"];
-            NSString *yearStr = [dateFormatter stringFromDate:needFormatDate];
-            NSString *nowYear = [dateFormatter stringFromDate:nowDate];
-            
-            if ([yearStr isEqualToString:nowYear]) {
-                ////  在同一年
-                [dateFormatter setDateFormat:@"MM月dd日 HH时mm分"];
-                dateStr = [dateFormatter stringFromDate:needFormatDate];
-            } else {
-                [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH时mm分"];
-                dateStr = [dateFormatter stringFromDate:needFormatDate];
-            }
-        }
-        
-        return dateStr;
-    }
-    @catch (NSException *exception) {
-        return @"";
-    }
+    return nil;
 }
 @end

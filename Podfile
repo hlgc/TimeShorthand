@@ -3,7 +3,7 @@ platform :ios, '8.0'
 target 'TimeShorthand' do
 
     inhibit_all_warnings!
-
+    
     pod 'YYKit'
     pod 'SDWebImage'
     pod 'MBProgressHUD'
@@ -15,6 +15,7 @@ target 'TimeShorthand' do
     pod 'JPush'
     
     pod 'MMDrawerController'
+    
     
     # 友盟分享
     # 集成微信(精简版0.2M)

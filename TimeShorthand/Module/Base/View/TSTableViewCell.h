@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TSTableViewCell : UITableViewCell
 
+@property (nonatomic, copy) PFVoidBlock didClickSelfBlock;
+
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 + (instancetype)cellWithTableView:(UITableView *)tableView identifier:(NSString *)identifier;
 

@@ -30,4 +30,12 @@
     return count;
 }
 
+- (NSString *)headUrl {
+    if (_headUrl) {
+        return _headUrl;
+    }
+    _headUrl = @"";
+    return _headUrl;
+}
+
 @end

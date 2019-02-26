@@ -12,6 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *headImage;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *subname;
 
 @end
 
@@ -20,6 +23,12 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self addShadowToView:self.bgView withColor:[UIColor blackColor]];
+    
+    TSUser *user = TSUserTool.sharedInstance.user;
+    _username.text = user.name;
+    _subname.text = user.birthday;
+    
+    [_headImage sd_setImageWithURL:[NSURL URLWithString:user.headUrl] placeholderImage:[UIImage imageNamed:@"icon-1024"]];
 }
 
 

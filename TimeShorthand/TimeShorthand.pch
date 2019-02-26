@@ -17,7 +17,7 @@
 #import "TSConst.h"
 #import "Macro.h"
 
-#import <YYKit/YYKit.h>
+#import <YYKit.h>
 #import "UIView+PFExtension.h"
 #import "UIFont+PFExtension.h"
 #import "UIColor+Hex.h"
@@ -26,6 +26,7 @@
 #import "LHFunc.h"
 #import "TSTools.h"
 #import <Masonry.h>
+#import <UIImageView+WebCache.h>
 
 #import <AVOSCloud/AVOSCloud.h>
 

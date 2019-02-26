@@ -18,7 +18,7 @@
 - (void)setModel:(TSCommonModel *)model {
     _model = model;
     self.iconImageView.alpha = model.imagename.length;
-    
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:model.imagename] placeholderImage:[UIImage imageNamed:@"icon-1024.png"]];
     self.titleLabel.text = model.title;
     self.subTitleLabel.text = model.subTitle;
 }
