@@ -85,8 +85,8 @@ selector:_selector name:_name object:_object];
 #pragma mark - 网络加载
 #define SQL_SELECT_LIMIT(classname, byName, page, count) [NSString stringWithFormat:@"select * from %@ order by %@ DESC limit %zd,%zd", classname, byName, (NSInteger)page*count, (NSInteger)count]
 
-#define SQL_SELECT_LIMIT_BY_RELEASETIME_FOR_COUNT(classname, page, count) SQL_SELECT_LIMIT(classname, @"releaseTime", page, count)
+#define SQL_SELECT_LIMIT_BY_RELEASETIME_FOR_COUNT(classname, page, count) SQL_SELECT_LIMIT(classname, @"time", page, count)
 
-#define SQL_SELECT_LIMIT_BY_RELEASETIME_DEFAULT(classname, page) SQL_SELECT_LIMIT(classname, @"releaseTime", page, kDefaultPageCount)
+#define SQL_SELECT_LIMIT_BY_RELEASETIME_DEFAULT(classname, page) SQL_SELECT_LIMIT(classname, @"time", page, kDefaultPageCount)
 
 #endif /* Macro_h */

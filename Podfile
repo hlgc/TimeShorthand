@@ -15,7 +15,7 @@ target 'TimeShorthand' do
     pod 'JPush'
     
     pod 'MMDrawerController'
-    
+    pod 'MJRefresh'
     
     # 友盟分享
     # 集成微信(精简版0.2M)

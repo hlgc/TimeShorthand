@@ -39,6 +39,28 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TSRecollectCell" bundle:nil] forCellReuseIdentifier:TSRecollectCell.identifer];
     [self.tableView registerClass:TSRecollectHeaderView.class forHeaderFooterViewReuseIdentifier:TSRecollectHeaderView.identifer];
+    
+    [self headerRefreshing];
+}
+
+#pragma mark Load
+- (void)headerRefreshing {
+    self.page = 0;
+    [self getRecollectList:^{
+        [self.tableView reloadData];
+    }];
+}
+
+- (void)footerRefreshing {
+    [self getRecollectList:^{
+        [self.tableView reloadData];
+    }];
+}
+
+- (void)getRecollectList:(PFVoidBlock)complete {
+    [AVQuery doCloudQueryInBackgroundWithCQL:SQL_SELECT_LIMIT_BY_RELEASETIME_DEFAULT(@"Recollect", self.page) callback:^(AVCloudQueryResult *result, NSError *error) {
+        [self listCallbackWithClassname:@"TSRecollectModel"](result, error, complete);
+    }];
 }
 
 #pragma mark - Touch

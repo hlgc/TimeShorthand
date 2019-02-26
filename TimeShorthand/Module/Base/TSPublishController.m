@@ -18,6 +18,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
 @property (nonatomic, strong) LHPhotoManager *photoManager;
 @property (nonatomic, strong) LHPhotoView *photoView;
 
+@property (nonatomic, strong) NSMutableArray *images;
 
 @end
 
@@ -43,7 +44,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
 - (void)setupInit {
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     cancelButton.titleLabel.font = [UIFont systemFontOfSize:16.0f];
-    [cancelButton setTitleColor:[UIColor pf_colorWithHex:0x666666] forState:UIControlStateNormal];
+    [cancelButton setTitleColor:[UIColor pf_colorWithHex:0x999999] forState:UIControlStateNormal];
     [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(onTouchCancelClick:) forControlEvents:UIControlEventTouchUpInside];
     [cancelButton sizeToFit];
@@ -52,7 +53,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     UIButton *publishButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _publishButton = publishButton;
     publishButton.titleLabel.font = [UIFont systemFontOfSize:16.0f];
-    [publishButton setTitleColor:[UIColor pf_colorWithHex:0xd7ab70] forState:UIControlStateNormal];
+    [publishButton setTitleColor:[UIColor pf_colorWithHex:0x3F7332] forState:UIControlStateNormal];
     [publishButton setTitle:@"发布" forState:UIControlStateNormal];
     [publishButton addTarget:self action:@selector(onTouchPublishButton:) forControlEvents:UIControlEventTouchUpInside];
     [publishButton sizeToFit];
@@ -78,7 +79,82 @@ static const CGFloat kPhotoViewMargin = 20.0f;
 }
 
 - (void)onTouchPublishButton:(UIButton *)button {
+    if (!_textView.textView.text.length) {
+        [LHHudTool showErrorWithMessage:@"请输入内容~"];
+        return;
+    }
+    [LHHudTool showLoading];
+    if (self.photoManager.afterSelectedArray.count) {
+        /// 有图
+        //判断选中的有多少个，超过一个就是图片
+        if (self.photoManager.afterSelectedArray.count == 1) {
+            HXPhotoModel *selectedModel = self.photoManager.afterSelectedArray.firstObject;
+            //判断是否是视频
+            if (selectedModel.type == HXPhotoModelMediaTypeCameraVideo ||
+                selectedModel.type == HXPhotoModelMediaTypeVideo) {
+                return;
+            }
+            //图片
+            [self postSinglePhotoWithModel:selectedModel];
+            return;
+        }
+    }
+    [self _publish];
+}
+
+- (void)updateImage:(UIImage *)image {
+    NSData *imageData = UIImageJPEGRepresentation(image, .3f);
+    AVFile *file = [AVFile fileWithData:imageData name:@"recollect.png"];
     
+    [file uploadWithCompletionHandler:^(BOOL succeeded, NSError *error) {
+        if (error || !succeeded) {
+            
+            return ;
+        }
+        NSLog(@"%@", file.url);
+        [self.images addObject:file.url];
+        if (self.photoManager.afterSelectedArray.count == self.images.count) {
+            /// 发布
+            [self _publish];
+        }
+    }];
+}
+
+- (void)_publish {
+    AVObject *recollect = [AVObject objectWithClassName:@"Recollect"];
+    [recollect setObject:self.textView.textView.text forKey:@"content"];
+    [recollect setObject:self.images.copy forKey:@"images"];
+    [recollect setObject:[NSString stringWithFormat:@"%.0f", [[NSDate new] timeIntervalSince1970]] forKey:@"time"];
+    AVUser *currentUser = [AVUser currentUser];
+    // owner 字段为 Pointer 类型，指向 _User 表
+    [recollect setObject:currentUser forKey:@"user"];
+    [recollect saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!succeeded) {
+            [LHHudTool showErrorWithMessage:error.localizedFailureReason ? : kServiceErrorString];
+            return;
+        }
+        // 存储成功
+        [LHHudTool showSuccessWithMessage:@"发布成功"];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+}
+
+#pragma mark Images
+- (void)postSinglePhotoWithModel:(HXPhotoModel *)selectedModel {
+    LHWeakSelf
+    if (selectedModel.asset) {
+        PHImageRequestOptions*options = [[PHImageRequestOptions alloc]init];
+        options.deliveryMode=PHImageRequestOptionsDeliveryModeHighQualityFormat;
+        [[PHImageManager defaultManager] requestImageDataForAsset:selectedModel.asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+            [weakSelf updateImage:[UIImage imageWithData:imageData]];
+        }];
+    } else {
+        UIImage *image = selectedModel.thumbPhoto;
+        if (selectedModel.previewPhoto) {
+            image = selectedModel.previewPhoto;
+        }
+        [weakSelf updateImage:image];
+    }
 }
 
 #pragma mark - Delegate
@@ -185,6 +261,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     }
     _photoManager = [[LHPhotoManager alloc] initWithType:HXPhotoManagerSelectedTypePhoto];
     _photoManager.selectedType = HXPhotoManagerSelectedTypePhoto;
+    _photoManager.configuration.maxNum = 1;
     //    //是否打开相机
     //    _photoManager.configuration.openCamera = YES;
     //    //是否查看livePhoto
@@ -257,6 +334,14 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     //        [viewController presentViewController:imagePickerController animated:YES completion:nil];
     //    };
     return _photoManager;
+}
+
+- (NSMutableArray *)images {
+    if (_images) {
+        return _images;
+    }
+    _images = @[].mutableCopy;
+    return _images;
 }
 
 @end
