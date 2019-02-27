@@ -11,6 +11,9 @@
 
 @interface TSTableViewController ()
 
+@property (nonatomic, strong) MJRefreshGifHeader *gifHeader;
+@property (nonatomic, strong) MJRefreshAutoGifFooter *gifFooter;
+
 @end
 
 @implementation TSTableViewController
@@ -43,6 +46,19 @@
         [self setDatasWithModels:models];
         SAFE_BLOCK(complete);
     };
+}
+
+- (NSArray *)modelArrayWithJson:(NSArray *)json classname:(NSString *)classname error:(NSError *)error {
+    if (error) {
+        [LHHudTool showErrorWithMessage:error.localizedFailureReason ? : kServiceErrorString];
+        return nil;
+    }
+    NSMutableArray *tempArr = @[].mutableCopy;
+    [json enumerateObjectsUsingBlock:^(AVObject *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [tempArr addObject:[obj objectForKey:kLocalDataKey]];
+    }];
+    NSArray *models = [NSArray modelArrayWithClass:NSClassFromString(classname) json:tempArr];
+    return models;
 }
 
 - (void)setDatasWithModels:(NSArray *)models {
@@ -107,6 +123,28 @@
     } else {
         self.tableView.mj_footer = nil;
     }
+}
+
+- (MJRefreshGifHeader *)gifHeader {
+    if (_gifHeader) {
+        return _gifHeader;
+    }
+    WEAK_SELF
+    _gifHeader = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        [weakSelf headerRefreshing];
+    }];
+    return _gifHeader;
+}
+
+- (MJRefreshAutoGifFooter*)gifFooter {
+    if (_gifFooter) {
+        return _gifFooter;
+    }
+    WEAK_SELF
+    _gifFooter = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+        [weakSelf footerRefreshing];
+    }];
+    return _gifFooter;
 }
 
 

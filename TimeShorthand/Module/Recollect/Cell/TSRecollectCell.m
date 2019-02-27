@@ -44,6 +44,8 @@
         [_image sd_setImageWithURL:[NSURL URLWithString:model.images.firstObject] placeholderImage:[UIImage imageNamed:@"icon-1024"]];
         self.imageWidth.constant = 50.0f;
     }
+    [self layoutIfNeeded];
+    self.cellHeight = _titleLabel.bottom > 60 ? _titleLabel.bottom + 15.0f : 60;
 }
 
 @end

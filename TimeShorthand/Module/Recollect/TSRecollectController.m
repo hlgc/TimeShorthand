@@ -42,13 +42,16 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"TSRecollectCell" bundle:nil] forCellReuseIdentifier:TSRecollectCell.identifer];
     [self.tableView registerClass:TSRecollectHeaderView.class forHeaderFooterViewReuseIdentifier:TSRecollectHeaderView.identifer];
     
+    self.refreshHeader = YES;
     [self headerRefreshing];
 }
 
 #pragma mark Load
 - (void)headerRefreshing {
     self.page = 0;
+    [self.dict removeAllObjects];
     [self getRecollectList:^{
+        [self endRefreshingWithStyle:PFTableNodeControllerRefreshStyleHeader];
         [self.tableView reloadData];
     }];
 }
@@ -60,7 +63,7 @@
 }
 
 - (void)getRecollectList:(PFVoidBlock)complete {
-    [AVQuery doCloudQueryInBackgroundWithCQL:SQL_SELECT_LIMIT_BY_RELEASETIME_DEFAULT(@"Recollect", self.page) callback:^(AVCloudQueryResult *result, NSError *error) {
+    [AVQuery doCloudQueryInBackgroundWithCQL:[NSString stringWithFormat:@"select * from Recollect order by time DESC limit %zd,%d", 5 * self.page, 5] callback:^(AVCloudQueryResult *result, NSError *error) {
         [self listCallbackWithClassname:@"TSRecollectModel"](result, error, complete);
     }];
 }
@@ -68,6 +71,7 @@
 - (void)setDatasWithModels:(NSArray *)models {
     [super setDatasWithModels:models];
     /// 二次重组数据, 分组
+    
     [models enumerateObjectsUsingBlock:^(TSRecollectModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDateFormatter *df = [TSDateTool dateFormatter];
         [df setDateFormat:@"yyyy/MM/dd"];
@@ -105,7 +109,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0f;
+    NSMutableArray *array = self.dict.allValues[indexPath.section];
+    TSRecollectCell *cell = [tableView dequeueReusableCellWithIdentifier:TSRecollectCell.identifer];
+    cell.model = array[indexPath.row];
+    return cell.cellHeight;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

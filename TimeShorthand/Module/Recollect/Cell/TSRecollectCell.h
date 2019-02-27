@@ -12,5 +12,6 @@
 @interface TSRecollectCell : TSTableViewCell
 
 @property (nonatomic, strong) TSRecollectModel *model;
+@property (nonatomic, assign) CGFloat cellHeight;
 
 @end

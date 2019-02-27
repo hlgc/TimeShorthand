@@ -222,7 +222,7 @@
     TSUser *user = TSUserTool.sharedInstance.user;
     
     TSCommonModel *model1 = [TSCommonModel new];
-    model1.imagename = user.headUrl;
+    model1.imagename = user.headUrl?:@"123";
     model1.title = @"头像";
     
     TSCommonModel *model2 = [TSCommonModel new];
