@@ -63,6 +63,11 @@
     }];
 }
 
+- (void)setDatasWithModels:(NSArray *)models {
+    [super setDatasWithModels:models];
+    /// 二次重组数据, 分组
+}
+
 #pragma mark - Touch
 - (void)onTouchAdd {
     [self presentViewController:[[TSNavigationController alloc] initWithRootViewController:[TSPublishController new]] animated:YES completion:nil];
