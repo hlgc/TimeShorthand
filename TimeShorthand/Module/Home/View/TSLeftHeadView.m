@@ -24,6 +24,10 @@
     [super awakeFromNib];
     [self addShadowToView:self.bgView withColor:[UIColor blackColor]];
     
+    
+}
+
+- (void)loadData {
     TSUser *user = TSUserTool.sharedInstance.user;
     _username.text = user.name;
     _subname.text = user.birthday;

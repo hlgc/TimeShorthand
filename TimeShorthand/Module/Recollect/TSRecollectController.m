@@ -35,6 +35,7 @@
     _headView = [TSLeftHeadView viewFromXib];
     _headView.clipsToBounds = YES;
     _headView.height = 240.0f;
+    [_headView loadData];
     self.tableView.tableHeaderView = _headView;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(onTouchAdd)];

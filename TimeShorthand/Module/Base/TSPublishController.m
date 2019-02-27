@@ -143,6 +143,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     [recollect setObject:self.images.copy forKey:@"images"];
     
     NSDateFormatter *df = [TSDateTool dateFormatter];
+    [df setDateFormat:@"当前发布于 yyyy年MM月dd日"];
     NSDate *selectDate = [df dateFromString:[_timeButton titleForState:UIControlStateNormal]];
     [recollect setObject:[NSString stringWithFormat:@"%.0f", [selectDate timeIntervalSince1970]] forKey:@"time"];
     [recollect setObject:[AVUser currentUser].username forKey:@"user"];

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TSLeftHeadView : TSView
 
+- (void)loadData;
+
 @end
 
 NS_ASSUME_NONNULL_END

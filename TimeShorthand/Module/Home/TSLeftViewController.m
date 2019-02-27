@@ -41,6 +41,11 @@
     self.tableView.tableHeaderView = _headView;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [_headView loadData];
+}
+
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
 //    self.tableViewTop.constant = [UIView safeAreaTop];
