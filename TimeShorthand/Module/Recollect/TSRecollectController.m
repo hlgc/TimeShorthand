@@ -63,7 +63,8 @@
 }
 
 - (void)getRecollectList:(PFVoidBlock)complete {
-    [AVQuery doCloudQueryInBackgroundWithCQL:[NSString stringWithFormat:@"select * from Recollect order by time DESC limit %zd,%d", 5 * self.page, 5] callback:^(AVCloudQueryResult *result, NSError *error) {
+    
+    [AVQuery doCloudQueryInBackgroundWithCQL:[NSString stringWithFormat:@"select * from Recollect where user = '%@' order by time DESC limit %zd,%d", [AVUser currentUser].username, 5 * self.page, 5] callback:^(AVCloudQueryResult *result, NSError *error) {
         [self listCallbackWithClassname:@"TSRecollectModel"](result, error, complete);
     }];
 }

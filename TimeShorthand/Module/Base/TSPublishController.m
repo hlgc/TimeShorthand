@@ -7,6 +7,9 @@
 //
 
 #import "TSPublishController.h"
+#import "UIButton+ImageTitleSpacing.h"
+#import "TSDateTool.h"
+#import "PFDatePicker.h"
 
 static const CGFloat kPhotoViewMargin = 20.0f;
 
@@ -19,6 +22,8 @@ static const CGFloat kPhotoViewMargin = 20.0f;
 @property (nonatomic, strong) LHPhotoView *photoView;
 
 @property (nonatomic, strong) NSMutableArray *images;
+
+@property (nonatomic, strong) UIButton *timeButton;
 
 @end
 
@@ -38,7 +43,12 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     
     CGFloat textViewW = self.view.width - kGallopItemMargin * 2;
     _textView.frame = CGRectMake(kGallopItemMargin, 15.0f, self.view.width - kGallopItemMargin * 2, textViewW * .46567f);
-    _photoView.frame = CGRectMake(20.0f, _textView.maxY + 20.0f, self.view.width - 40.0f, 0);
+    
+    [_timeButton sizeToFit];
+    _timeButton.left = kGallopItemMargin;
+    _timeButton.top = _textView.maxY + 20.0f;
+    
+    _photoView.frame = CGRectMake(20.0f, _timeButton.maxY + 20.0f, self.view.width - 40.0f, 0);
 }
 
 - (void)setupInit {
@@ -74,6 +84,20 @@ static const CGFloat kPhotoViewMargin = 20.0f;
 #pragma mark Image
 
 #pragma mark - Touch
+- (void)onTouchTimeButton:(UIButton *)button {
+    [PFDatePicker showWithDate:nil title:@"设置发布时间" mode:PFDatePickerViewDateMode complete:^(NSString *dateStr) {
+        NSDateFormatter *dateFormatter = [TSDateTool dateFormatter];
+        dateFormatter.dateFormat = @"yyyy-MM-dd";
+        NSDate *selectDate = [dateFormatter dateFromString:dateStr];
+        [dateFormatter setDateFormat:@"当前发布于 yyyy年MM月dd日"];
+        NSString *newDateStr = [dateFormatter stringFromDate:selectDate];
+        
+        [self.timeButton setTitle:newDateStr forState:UIControlStateNormal];
+        [self.timeButton sizeToFit];
+        [self.timeButton pf_layoutButtonWithEdgeInsetsStyle:PFButtonEdgeInsetsStyleRight imageTitleSpace:0];
+    }];
+}
+
 - (void)onTouchCancelClick:(UIButton *)button {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -87,17 +111,10 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     if (self.photoManager.afterSelectedArray.count) {
         /// 有图
         //判断选中的有多少个，超过一个就是图片
-        if (self.photoManager.afterSelectedArray.count == 1) {
-            HXPhotoModel *selectedModel = self.photoManager.afterSelectedArray.firstObject;
-            //判断是否是视频
-            if (selectedModel.type == HXPhotoModelMediaTypeCameraVideo ||
-                selectedModel.type == HXPhotoModelMediaTypeVideo) {
-                return;
-            }
-            //图片
-            [self postSinglePhotoWithModel:selectedModel];
-            return;
-        }
+        [self.photoManager.afterSelectedArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self postSinglePhotoWithModel:obj];
+        }];
+        return;
     }
     [self _publish];
 }
@@ -124,10 +141,11 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     AVObject *recollect = [AVObject objectWithClassName:@"Recollect"];
     [recollect setObject:self.textView.textView.text forKey:@"content"];
     [recollect setObject:self.images.copy forKey:@"images"];
-    [recollect setObject:[NSString stringWithFormat:@"%.0f", [[NSDate new] timeIntervalSince1970]] forKey:@"time"];
-    AVUser *currentUser = [AVUser currentUser];
-    // owner 字段为 Pointer 类型，指向 _User 表
-    [recollect setObject:currentUser forKey:@"user"];
+    
+    NSDateFormatter *df = [TSDateTool dateFormatter];
+    NSDate *selectDate = [df dateFromString:[_timeButton titleForState:UIControlStateNormal]];
+    [recollect setObject:[NSString stringWithFormat:@"%.0f", [selectDate timeIntervalSince1970]] forKey:@"time"];
+    [recollect setObject:[AVUser currentUser].username forKey:@"user"];
     [recollect saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!succeeded) {
             [LHHudTool showErrorWithMessage:error.localizedFailureReason ? : kServiceErrorString];
@@ -229,6 +247,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     [self.view addSubview:_scrollView];
     
     [self addTextView];
+    [self addTimeButton];
     [self addPhotoView];
 }
 
@@ -243,6 +262,20 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     //    _textView.textContainerInset = UIEdgeInsetsMake(.0f, 0.0f, 26.0f, 0.0f);
     //    _textView.placehLab.frame = CGRectMake(6, 2, 200, 16);
     [_scrollView addSubview:_textView];
+}
+
+- (void)addTimeButton {
+    NSDateFormatter *df = [TSDateTool dateFormatter];
+    [df setDateFormat:@"当前发布于 yyyy年MM月dd日"];
+    _timeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [_timeButton setTitle:[df stringFromDate:[NSDate new]] forState:UIControlStateNormal];
+    [_timeButton setImage:[UIImage imageNamed:@"arrow"] forState:UIControlStateNormal];
+    [_timeButton setTitleColor:[UIColor pf_colorWithHex:0x666666] forState:UIControlStateNormal];
+    [_timeButton addTarget:self action:@selector(onTouchTimeButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_timeButton sizeToFit];
+    [_timeButton pf_layoutButtonWithEdgeInsetsStyle:PFButtonEdgeInsetsStyleRight imageTitleSpace:0];
+    [_scrollView addSubview:_timeButton];
 }
 
 - (void)addPhotoView {
@@ -261,7 +294,6 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     }
     _photoManager = [[LHPhotoManager alloc] initWithType:HXPhotoManagerSelectedTypePhoto];
     _photoManager.selectedType = HXPhotoManagerSelectedTypePhoto;
-    _photoManager.configuration.maxNum = 1;
     //    //是否打开相机
     //    _photoManager.configuration.openCamera = YES;
     //    //是否查看livePhoto
