@@ -11,6 +11,7 @@
 #import "PFActionSheet.h"
 #import "HXPhotoPicker.h"
 #import "TSDateTool.h"
+#import "TSSetPropertyController.h"
 
 @interface TSPersonalCenterController () <HXAlbumListViewControllerDelegate, HXCustomCameraViewControllerDelegate>
 
@@ -164,6 +165,7 @@
     cell.model = self.datas[indexPath.row];
     cell.didClickSelfBlock = ^{
         if (indexPath.row) {
+            [self presentViewController:[TSSetPropertyController new] animated:YES completion:nil];
             return ;
         }
         [[[PFActionSheet alloc] initWithMessage:nil alertBlock:^(NSInteger index) {

@@ -36,7 +36,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"TSLeftItemCell" bundle:nil] forCellReuseIdentifier:TSLeftItemCell.identifer];
     
     _headView = [TSLeftHeadView viewFromXib];
-    _headView.height = 100.0f;
+    _headView.height = 180.0f;
     _headView.clipsToBounds = YES;
     self.tableView.tableHeaderView = _headView;
 }

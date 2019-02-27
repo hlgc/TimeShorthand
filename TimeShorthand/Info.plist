@@ -33,7 +33,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tencent1106147443</string>
+				<string>tencent101556612</string>
 			</array>
 		</dict>
 	</array>
@@ -71,6 +71,11 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>TimeShorthand请求获取您的媒体资料库便于您保存媒体资源</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -90,10 +95,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 </dict>
 </plist>

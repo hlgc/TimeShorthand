@@ -45,12 +45,23 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *completeButton;
 
+@property (nonatomic, strong) UIButton *closeBtn;
+
 @end
 
 @implementation TSSetPropertyController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_closeBtn setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+    [_closeBtn addTarget:self action:@selector(onTouchCloseBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [_closeBtn sizeToFit];
+    [self.view addSubview:_closeBtn];
+    _closeBtn.left = 15.0f;
+    _closeBtn.top = 15.0f + [UIView safeAreaTop];
+    
     [self.view insertSubview:self.bgview aboveSubview:self.scrollView];
     [self initprama];
     [self draw];
@@ -61,6 +72,8 @@
     NSDateFormatter *dateFormatter = [TSDateTool dateFormatter];
     dateFormatter.dateFormat = @"yyyy年MM月dd日";
     self.timeLabel.text = [dateFormatter stringFromDate:[NSDate date]];
+    self.nameTextField.text = TSUserTool.sharedInstance.user.name;
+    self.lifeTextField.text = TSUserTool.sharedInstance.user.life;
 }
 
 - (IBAction)onTouchBirthDay:(id)sender {
@@ -72,6 +85,10 @@
         NSString *newDateStr = [dateFormatter stringFromDate:selectDate];
         self.timeLabel.text = newDateStr;
     }];
+}
+
+- (void)onTouchCloseBtn:(UIButton *)btn {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)onTouchCompleteButton:(id)sender {

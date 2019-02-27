@@ -122,7 +122,7 @@
      * 移除相应平台的分享，如微信收藏
      */
     //[[UMSocialManager defaultManager] removePlatformProviderWithPlatformTypes:@[@(UMSocialPlatformType_WechatFavorite)]];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1106147443"/*设置QQ平台的appID*/  appSecret:nil redirectURL:nil];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"101556612"/*设置QQ平台的appID*/  appSecret:nil redirectURL:nil];
 }
 
 @end

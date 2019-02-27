@@ -162,6 +162,8 @@
 		C581694E222536790038FB09 /* LHPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C581694C222536780038FB09 /* LHPhotoView.m */; };
 		C5816951222536A10038FB09 /* LHPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5816950222536A10038FB09 /* LHPhotoManager.m */; };
 		C5816955222547480038FB09 /* TSRecollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5816954222547480038FB09 /* TSRecollectModel.m */; };
+		C5816958222635D90038FB09 /* TSSettingLoginoutHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5816957222635D90038FB09 /* TSSettingLoginoutHeaderView.m */; };
+		C581695A222635FA0038FB09 /* TSSettingLoginoutHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5816959222635FA0038FB09 /* TSSettingLoginoutHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -483,6 +485,9 @@
 		C5816950222536A10038FB09 /* LHPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHPhotoManager.m; sourceTree = "<group>"; };
 		C5816953222547480038FB09 /* TSRecollectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSRecollectModel.h; sourceTree = "<group>"; };
 		C5816954222547480038FB09 /* TSRecollectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSRecollectModel.m; sourceTree = "<group>"; };
+		C5816956222635D90038FB09 /* TSSettingLoginoutHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSSettingLoginoutHeaderView.h; sourceTree = "<group>"; };
+		C5816957222635D90038FB09 /* TSSettingLoginoutHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSSettingLoginoutHeaderView.m; sourceTree = "<group>"; };
+		C5816959222635FA0038FB09 /* TSSettingLoginoutHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSSettingLoginoutHeaderView.xib; sourceTree = "<group>"; };
 		DDC7019C7DBAA90C1FBED7A1 /* Pods-TimeShorthand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeShorthand.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand.release.xcconfig"; sourceTree = "<group>"; };
 		E9BB8888A0B538727A35A69E /* libPods-TimeShorthand.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeShorthand.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B83A6D358BD21602EF6014 /* Pods-TimeShorthand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeShorthand.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand.debug.xcconfig"; sourceTree = "<group>"; };
@@ -954,6 +959,9 @@
 			children = (
 				C563F2F82223BF1200E17118 /* TSNotiSwitchView.h */,
 				C563F2F92223BF1200E17118 /* TSNotiSwitchView.m */,
+				C5816956222635D90038FB09 /* TSSettingLoginoutHeaderView.h */,
+				C5816957222635D90038FB09 /* TSSettingLoginoutHeaderView.m */,
+				C5816959222635FA0038FB09 /* TSSettingLoginoutHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1265,6 +1273,7 @@
 			files = (
 				C563F3172223D97C00E17118 /* TSSetPropertyController.xib in Resources */,
 				C563F2A122213CC900E17118 /* TSLeftItemCell.xib in Resources */,
+				C581695A222635FA0038FB09 /* TSSettingLoginoutHeaderView.xib in Resources */,
 				C51CA0B921D7507B0077524E /* TSTableViewController.xib in Resources */,
 				C563F273221EEFC800E17118 /* xl_clock_minuteHand_shadow.png in Resources */,
 				C563F271221EEFC800E17118 /* xl_clock_hourHand.png in Resources */,
@@ -1442,6 +1451,7 @@
 				C563F262221EEFC800E17118 /* POPDecayAnimation.mm in Sources */,
 				C5243C0D21D4E96C00E4A6EB /* AppDelegate.m in Sources */,
 				C5816925222522240038FB09 /* HXPhotoCommon.m in Sources */,
+				C5816958222635D90038FB09 /* TSSettingLoginoutHeaderView.m in Sources */,
 				C563F2F122238F7600E17118 /* TSPersonalCenterCell.m in Sources */,
 				C581691B222522240038FB09 /* UIImageView+HXExtension.m in Sources */,
 				C563F2E622219BF000E17118 /* TSTools.m in Sources */,

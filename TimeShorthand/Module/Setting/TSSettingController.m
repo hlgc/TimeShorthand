@@ -9,7 +9,10 @@
 #import "TSSettingController.h"
 #import "TSNotiSwitchView.h"
 #import "TSPersonalCenterCell.h"
-
+#import "TSSettingLoginoutHeaderView.h"
+#import "TSSetPropertyController.h"
+#import "TSAlertView.h"
+#import "AppDelegate.h"
 @interface TSSettingController ()
 
 @property (nonatomic, strong) TSNotiSwitchView *headerView;
@@ -29,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"TSPersonalCenterCell" bundle:nil] forCellReuseIdentifier:TSPersonalCenterCell.identifer];
+    [self.tableView registerNib:[UINib nibWithNibName:@"TSSettingLoginoutHeaderView" bundle:nil] forCellReuseIdentifier:TSSettingLoginoutHeaderView.identifer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -57,11 +61,32 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TSPersonalCenterCell *cell = [tableView dequeueReusableCellWithIdentifier:[TSPersonalCenterCell identifer]];
     cell.model = self.datas[indexPath.row];
+    cell.didClickSelfBlock = ^{
+        [self presentViewController:[TSSetPropertyController new] animated:YES completion:nil];
+    };
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 64.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    TSSettingLoginoutHeaderView *head = [TSSettingLoginoutHeaderView viewFromXib];
+    head.didClickSelfBlock = ^{
+        [[[TSAlertView alloc] initWithTitle:nil message:@"确定退出?" alertBlock:^(NSInteger index) {
+            if (!index) {
+                return ;
+            }
+            [TSUserTool logOut];
+            [((AppDelegate *)UIApplication.sharedApplication.delegate) setupRootViewController];
+        } cancelTitle:@"取消" otherTitles:@"确定", nil] show];
+    };
+    return head;
 }
 
 - (NSMutableArray *)datas {

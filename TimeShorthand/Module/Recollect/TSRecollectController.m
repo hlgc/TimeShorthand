@@ -11,10 +11,12 @@
 #import "TSRecollectHeaderView.h"
 #import "TSRecollectCell.h"
 #import "TSPublishController.h"
+#import "TSDateTool.h"
 
 @interface TSRecollectController ()
 
 @property (nonatomic, strong) TSLeftHeadView *headView;
+@property (nonatomic, strong) NSMutableDictionary *dict;
 
 @end
 
@@ -32,7 +34,7 @@
     [super viewDidLoad];
     _headView = [TSLeftHeadView viewFromXib];
     _headView.clipsToBounds = YES;
-    _headView.height = 150.0f;
+    _headView.height = 240.0f;
     self.tableView.tableHeaderView = _headView;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(onTouchAdd)];
@@ -66,6 +68,18 @@
 - (void)setDatasWithModels:(NSArray *)models {
     [super setDatasWithModels:models];
     /// 二次重组数据, 分组
+    [models enumerateObjectsUsingBlock:^(TSRecollectModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDateFormatter *df = [TSDateTool dateFormatter];
+        [df setDateFormat:@"yyyy/MM/dd"];
+        NSString *dateStr = [df stringFromDate:[NSDate dateWithTimeIntervalSince1970:model.time.integerValue]];
+        NSString *year = [dateStr substringWithRange:NSMakeRange(0, 4)];
+        NSMutableArray *tempArr = [self.dict objectForKey:year];
+        if (!tempArr) {
+            tempArr = @[].mutableCopy;
+        }
+        [tempArr addObject:model];
+        [self.dict setObject:tempArr forKey:year];
+    }];
 }
 
 #pragma mark - Touch
@@ -75,16 +89,18 @@
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return self.dict.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
-    return self.datas.count;
+    NSMutableArray *array = self.dict.allValues[section];
+    return array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *array = self.dict.allValues[indexPath.section];
     TSRecollectCell *cell = [tableView dequeueReusableCellWithIdentifier:TSRecollectCell.identifer];
+    cell.model = array[indexPath.row];
     return cell;
 }
 
@@ -98,11 +114,21 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     TSRecollectHeaderView *view = [TSRecollectHeaderView viewWithTableView:tableView];
+    view.titleLabel.text = self.dict.allKeys[section];
     return view;
 }
 
 - (void)setupInit {
     self.title = @"回忆录";
+}
+
+
+- (NSMutableDictionary *)dict {
+    if (_dict) {
+        return _dict;
+    }
+    _dict = @{}.mutableCopy;
+    return _dict;
 }
 
 @end

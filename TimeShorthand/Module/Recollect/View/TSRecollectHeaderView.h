@@ -9,5 +9,5 @@
 #import "TSTableViewHeaderFooterView.h"
 
 @interface TSRecollectHeaderView : TSTableViewHeaderFooterView
-
+@property (nonatomic, strong, readonly) UILabel *titleLabel;
 @end

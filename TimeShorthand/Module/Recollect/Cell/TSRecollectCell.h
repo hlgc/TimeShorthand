@@ -7,7 +7,10 @@
 //
 
 #import "TSTableViewCell.h"
+#import "TSRecollectModel.h"
 
 @interface TSRecollectCell : TSTableViewCell
+
+@property (nonatomic, strong) TSRecollectModel *model;
 
 @end
