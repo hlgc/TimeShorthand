@@ -1658,7 +1658,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TimeShorthand/Lib/WechatSDK1.8.2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hlgc.TimeShorthand;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zd.TimeShorthand;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1684,7 +1684,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TimeShorthand/Lib/WechatSDK1.8.2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hlgc.TimeShorthand;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zd.TimeShorthand;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
