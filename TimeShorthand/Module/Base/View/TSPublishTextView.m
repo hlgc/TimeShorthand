@@ -62,7 +62,7 @@ static NSInteger const kMaxContentCount = 1000;
     _placeHolder = [[UILabel alloc] init];
     _placeHolder.font = [UIFont pf_PingFangSC_RegularWithSize:15.0f];
     _placeHolder.numberOfLines = 0;
-    _placeHolder.text = @"说说你的想法...";
+    _placeHolder.text = @"Tell me what you think...";
     _placeHolder.textColor = [UIColor pf_colorWithHex:0x929292];
     [_textView addSubview:_placeHolder];
     [self addSubview:_textView];

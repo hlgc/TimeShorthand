@@ -12,8 +12,20 @@
 #import "TSAlertView.h"
 #import "TSUserTool.h"
 #import "AppDelegate.h"
+#import "TSLoginContentView.h"
 
 @interface TSLoginController ()
+
+@property (nonatomic, strong) TSLoginContentView *loginViewContent;
+@property (nonatomic, strong) TSLoginContentView *registerViewContent;
+
+@property (nonatomic, strong) UIButton *switchMode;
+@property (nonatomic, strong) UIButton *switchMode1;
+
+@property (nonatomic, assign) BOOL isSelecte;
+
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *password;
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) TSLoginTextField *usernameTextField;
@@ -88,17 +100,74 @@
     [self.view endEditing:YES];
 }
 
-- (void)onTouchLoginButton:(UIButton *)button {
+- (void)onTouchLoginButton {
     [self.view endEditing:YES];
     [LHHudTool showLoading];
-    [TSUserTool loginWithUsername:_usernameTextField.text password:_passwordTextField.text complete:^(NSError *error) {
+    [TSUserTool loginWithUsername:_username password:_password complete:^(NSError *error) {
         if (error) {
-            [LHHudTool showErrorWithMessage:error.localizedFailureReason?:@"登录失败~"];
+            [LHHudTool showErrorWithMessage:error.localizedFailureReason?:@"login failed"];
             return ;
         }
-        [LHHudTool showSuccessWithMessage:@"登录成功~"];
+        [LHHudTool showSuccessWithMessage:@"login success"];
         [self onTouchBackBtn:nil];
     }];
+}
+
+- (void)onTouchRegisterButton {
+    [self.view endEditing:YES];
+    [LHHudTool showLoading];
+    [TSUserTool registerWithUsername:_username password:_password complete:^(NSError *error) {
+        if (error) {
+            [LHHudTool showErrorWithMessage:error.localizedFailureReason?:@"register failed"];
+            return ;
+        }
+        [LHHudTool showSuccessWithMessage:@"register success"];
+        [self onTouchLoginButton];
+    }];
+}
+
+- (void)onTouchSwitchModeButton:(UIButton *)button {
+    [self.view endEditing:YES];
+    self.isSelecte = !self.isSelecte;
+    
+    if (self.isSelecte) {
+        
+//        lh_animations(^{
+//            self.switchMode.alpha = 0;
+//            self.switchMode1.alpha = 1;
+//
+//            self.loginViewContent.left = -ScreenWidth;
+//            self.registerViewContent.left = 0;
+//        }, nil);
+        /// 切换到Register
+        self.switchMode.alpha = 0;
+        self.switchMode1.alpha = 1;
+        [_loginViewContent mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.view).offset(-ScreenWidth);
+        }];
+        [_registerViewContent mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.view);
+        }];
+    } else {
+        self.switchMode.alpha = 1;
+        self.switchMode1.alpha = 0;
+//        lh_animations(^{
+//            self.switchMode.alpha = 1;
+//            self.switchMode1.alpha = 0;
+//
+//            self.loginViewContent.left = 0;
+//            self.registerViewContent.left = ScreenWidth;;
+//        }, nil);
+        [_loginViewContent mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.view);
+        }];
+        [_registerViewContent mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.view).offset(ScreenWidth);
+        }];
+    }
+    lh_animations(^{
+        [self.view layoutIfNeeded];
+    }, nil);
 }
 
 - (void)onTouchBackBtn:(UIButton *)button {
@@ -172,65 +241,134 @@
 }
 
 #pragma mark Add
+- (void)addLoginViewContent {
+    LHWeakSelf
+    _loginViewContent = [[TSLoginContentView alloc] init];
+    _loginViewContent.didClickLoginButton = ^(NSString *userName, NSString *password) {
+        weakSelf.username = userName;
+        weakSelf.password = password;
+        [weakSelf onTouchLoginButton];
+    };
+    [self.view addSubview:_loginViewContent];
+}
+
+- (void)addRegisterViewContent {
+    LHWeakSelf
+    _registerViewContent = [[TSLoginContentView alloc] init];
+    _registerViewContent.titleLabel.text = @"Register";
+    [_registerViewContent.loginButton setTitle:@"Register" forState:UIControlStateNormal];
+    _registerViewContent.didClickLoginButton = ^(NSString *userName, NSString *password) {
+        weakSelf.username = userName;
+        weakSelf.password = password;
+        [weakSelf onTouchRegisterButton];
+    };
+    [self.view addSubview:_registerViewContent];
+}
+
+- (void)addSwitchMode {
+    _switchMode = [UIButton buttonWithType:UIButtonTypeCustom];
+    _switchMode.titleLabel.font = [UIFont pf_PingFangSC_RegularWithSize:16.0f];
+    [_switchMode setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_switchMode setTitle:@"Register" forState:UIControlStateNormal];
+    [_switchMode addTarget:self action:@selector(onTouchSwitchModeButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_switchMode];
+}
+
+- (void)addSwitchMode1 {
+    _switchMode1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    _switchMode1.alpha = .0f;
+    _switchMode1.titleLabel.font = [UIFont pf_PingFangSC_RegularWithSize:16.0f];
+    [_switchMode1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_switchMode1 setTitle:@"Sign in" forState:UIControlStateNormal];
+    [_switchMode1 addTarget:self action:@selector(onTouchSwitchModeButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_switchMode1];
+}
+
+
 - (void)addConstraints {
-    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_loginViewContent mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(80.0f + [UIView safeAreaTop]);
-//        make.centerX.equalTo(self.view);
-        make.left.equalTo(self.view).offset(30.0f);
+        make.width.equalTo(self.view);
+        make.left.equalTo(self.view);
     }];
-    
-    [_usernameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_registerViewContent mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(80.0f + [UIView safeAreaTop]);
+        make.width.equalTo(self.view);
+        make.left.equalTo(self.view.mas_right);
+    }];
+    [_switchMode mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(30.0f);
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(52.0f);
-        make.right.equalTo(self.view).offset(-30.0f);
+        make.top.equalTo(self.loginViewContent.mas_bottom);
         make.height.equalTo(@44.0f);
     }];
     
-    [_passwordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_switchMode1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(30.0f);
-        make.top.equalTo(self.usernameTextField.mas_bottom).offset(24.0f);
-        make.right.equalTo(self.view).offset(-30.0f);
+        make.top.equalTo(self.loginViewContent.mas_bottom);
         make.height.equalTo(@44.0f);
     }];
-    
-    //    [_smsButton mas_makeConstraints:^(MASConstraintMaker *make) {
-    //        make.bottom.equalTo(self.smsTextField.mas_bottom);
-    //        make.right.equalTo(self.smsTextField);
-    //        make.height.equalTo(@44.0f);
-    //    }];
-    
-    [_tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.passwordTextField.mas_bottom).offset(10.0f);
-        make.left.equalTo(self.view).offset(30.0f);
-    }];
-    
-    [_userProBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.tipLabel);
-        make.right.equalTo(self.tipLabel).offset(-14.0f);
-    }];
-    
-    [_privacyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.tipLabel);
-        make.left.equalTo(self.tipLabel.mas_right);
-    }];
-    
-    [_loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.passwordTextField.mas_bottom).offset(54.0f);
-        make.height.equalTo(@44.0f);
-        make.left.equalTo(self.view).offset(30.0f);
-        make.right.equalTo(self.view).offset(-30.0f);
-    }];
+//    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.view).offset(80.0f + [UIView safeAreaTop]);
+////        make.centerX.equalTo(self.view);
+//        make.left.equalTo(self.view).offset(30.0f);
+//    }];
+//
+//    [_usernameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.view).offset(30.0f);
+//        make.top.equalTo(self.titleLabel.mas_bottom).offset(52.0f);
+//        make.right.equalTo(self.view).offset(-30.0f);
+//        make.height.equalTo(@44.0f);
+//    }];
+//
+//    [_passwordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.view).offset(30.0f);
+//        make.top.equalTo(self.usernameTextField.mas_bottom).offset(24.0f);
+//        make.right.equalTo(self.view).offset(-30.0f);
+//        make.height.equalTo(@44.0f);
+//    }];
+//
+//    //    [_smsButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//    //        make.bottom.equalTo(self.smsTextField.mas_bottom);
+//    //        make.right.equalTo(self.smsTextField);
+//    //        make.height.equalTo(@44.0f);
+//    //    }];
+//
+//    [_tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.passwordTextField.mas_bottom).offset(10.0f);
+//        make.left.equalTo(self.view).offset(30.0f);
+//    }];
+//
+//    [_userProBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(self.tipLabel);
+//        make.right.equalTo(self.tipLabel).offset(-14.0f);
+//    }];
+//
+//    [_privacyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(self.tipLabel);
+//        make.left.equalTo(self.tipLabel.mas_right);
+//    }];
+//
+//    [_loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.passwordTextField.mas_bottom).offset(54.0f);
+//        make.height.equalTo(@44.0f);
+//        make.left.equalTo(self.view).offset(30.0f);
+//        make.right.equalTo(self.view).offset(-30.0f);
+//    }];
 }
 
 - (void)addSubviews {
-    [self addTitleLabel];
-    [self addUsernameTextField];
-    [self addPasswordTextField];
-    //    [self addSmsButton];
-    [self addLoginButton];
-    [self addPrivacyBtn];
-    [self addUserProBtn];
-    [self addTipLabel];
+//    [self addTitleLabel];
+//    [self addUsernameTextField];
+//    [self addPasswordTextField];
+//    //    [self addSmsButton];
+//    [self addLoginButton];
+//    [self addPrivacyBtn];
+//    [self addUserProBtn];
+//    [self addTipLabel];
+    [self addLoginViewContent];
+    [self addRegisterViewContent];
+    [self addSwitchMode];
+    [self addSwitchMode1];
 }
 
 - (void)addTitleLabel {
@@ -302,7 +440,7 @@
 - (void)addTipLabel {
     _tipLabel = [UILabel new];
     _tipLabel.font = FONT_SYSTEM_14;
-//    _tipLabel.attributedText = [[[NSMutableAttributedString pf_makeAttributedString:@"登录注册表示同意" attributes:^(NSMutableDictionary *make) {
+//    _tipLabel.attributedText = [[[NSMutableAttributedString pf_makeAttributedString:@"登录Register表示同意" attributes:^(NSMutableDictionary *make) {
 //        make.pf_font(FONT_SYSTEM_14).pf_color(COLOR_A6A);
 //    }] pf_addAttributedString:@"用户协议" attributes:^(NSMutableDictionary *make) {
 //        make.pf_font(FONT_SYSTEM_14).pf_color([UIColor clearColor]);

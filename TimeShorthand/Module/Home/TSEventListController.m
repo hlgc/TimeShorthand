@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"事件";
+    self.title = @"Event";
     [self.tableView registerNib:[UINib nibWithNibName:@"TSEventListCell" bundle:nil] forCellReuseIdentifier:TSEventListCell.identifer];
 }
 
@@ -62,23 +62,23 @@
     
     NSInteger count = TSUserTool.sharedInstance.user.surplusLife;
     TSEventModel *model1 = [TSEventModel new];
-    model1.name = [NSString stringWithFormat:@"睡觉 %zd次", count];
+    model1.name = [NSString stringWithFormat:@"Sleep %zd Second", count];
     model1.selected = YES;
     
     TSEventModel *model2 = [TSEventModel new];
-    model2.name = [NSString stringWithFormat:@"洗澡 %zd次", count];
+    model2.name = [NSString stringWithFormat:@"Bathe %zd Second", count];
     
     TSEventModel *model3 = [TSEventModel new];
-    model3.name = [NSString stringWithFormat:@"旅行 %zd次", count/182];
+    model3.name = [NSString stringWithFormat:@"Travel %zd Second", count/182];
     
     TSEventModel *model4 = [TSEventModel new];
-    model4.name = [NSString stringWithFormat:@"看书 %zd次", count];
+    model4.name = [NSString stringWithFormat:@"Read Book %zd Second", count];
     
     TSEventModel *model5 = [TSEventModel new];
-    model5.name = [NSString stringWithFormat:@"玩游戏 %zd次", count];
+    model5.name = [NSString stringWithFormat:@"Play Game %zd Second", count];
     
     TSEventModel *model6 = [TSEventModel new];
-    model6.name = [NSString stringWithFormat:@"领工资 %zd次", count / 30];
+    model6.name = [NSString stringWithFormat:@"Get Paid %zd Second", count / 30];
     
     [tempDatas addObjectsFromArray:@[model1, model2, model3, model4, model5, model6]];
     return tempDatas;

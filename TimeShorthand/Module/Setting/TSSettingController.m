@@ -13,6 +13,8 @@
 #import "TSSetPropertyController.h"
 #import "TSAlertView.h"
 #import "AppDelegate.h"
+#import "TSWebController.h"
+
 @interface TSSettingController ()
 
 @property (nonatomic, strong) TSNotiSwitchView *headerView;
@@ -41,7 +43,7 @@
 }
 
 - (void)setupInit {
-    self.title = @"设置";
+    self.title = @"Set up";
     self.tableView.tableHeaderView = self.headerView;
 }
 
@@ -53,6 +55,21 @@
     return _headerView;
 }
 
+- (void)onTouchPrivacy {
+    [LHHudTool showLoading];
+    TSWebController *webViewVC = [[TSWebController alloc] initWithUrl:@"https://www.hlgc.xyz/TimeShorthand/protocol.html"];
+    webViewVC.title = @"Privacy clause";
+    [self.navigationController pushViewController:webViewVC animated:YES];
+}
+
+- (void)onTouchUserPro {
+    [LHHudTool showLoading];
+    TSWebController *webViewVC = [[TSWebController alloc] initWithUrl:@"https://www.hlgc.xyz/TimeShorthand/user/protocol.html"];
+    webViewVC.title = @"User agreement";
+    [self.navigationController pushViewController:webViewVC animated:YES];
+}
+
+
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.datas.count;
@@ -62,6 +79,15 @@
     TSPersonalCenterCell *cell = [tableView dequeueReusableCellWithIdentifier:[TSPersonalCenterCell identifer]];
     cell.model = self.datas[indexPath.row];
     cell.didClickSelfBlock = ^{
+        if (indexPath.row == 2) {
+            // 用户
+            [self onTouchUserPro];
+            return ;
+        } else if (indexPath.row == 3) {
+            ///  隐私
+            [self onTouchPrivacy];
+            return;
+        }
         [self presentViewController:[TSSetPropertyController new] animated:YES completion:nil];
     };
     return cell;
@@ -78,13 +104,13 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     TSSettingLoginoutHeaderView *head = [TSSettingLoginoutHeaderView viewFromXib];
     head.didClickSelfBlock = ^{
-        [[[TSAlertView alloc] initWithTitle:nil message:@"确定退出?" alertBlock:^(NSInteger index) {
+        [[[TSAlertView alloc] initWithTitle:nil message:@"Definite exit?" alertBlock:^(NSInteger index) {
             if (!index) {
                 return ;
             }
             [TSUserTool logOut];
             [((AppDelegate *)UIApplication.sharedApplication.delegate) setupRootViewController];
-        } cancelTitle:@"取消" otherTitles:@"确定", nil] show];
+        } cancelTitle:@"Cacel" otherTitles:@"Sure", nil] show];
     };
     return head;
 }
@@ -95,12 +121,17 @@
         return tempDatas;
     }
     TSCommonModel *model1 = [TSCommonModel new];
-    model1.title = @"设置生日";
+    model1.title = @"Set birthday";
     
     TSCommonModel *model2 = [TSCommonModel new];
-    model2.title = @"预设寿命";
+    model2.title = @"Preset life";
     
-    [tempDatas addObjectsFromArray:@[model1, model2]];
+    TSCommonModel *model3 = [TSCommonModel new];
+    model3.title = @"User agreement";
+    
+    TSCommonModel *model4 = [TSCommonModel new];
+    model4.title = @"Privacy clause";
+    [tempDatas addObjectsFromArray:@[model1, model2, model3, model4]];
     return tempDatas;
 }
 

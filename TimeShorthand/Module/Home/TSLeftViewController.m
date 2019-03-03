@@ -103,15 +103,15 @@
     }
     TSCommonModel *model1 = [TSCommonModel new];
     model1.imagename = @"personal";
-    model1.title = @"个人中心";
+    model1.title = @"Personal Center";
     
     TSCommonModel *model2 = [TSCommonModel new];
     model2.imagename = @"history";
-    model2.title = @"回忆录";
+    model2.title = @"Memoir";
     
     TSCommonModel *model3 = [TSCommonModel new];
     model3.imagename = @"setting";
-    model3.title = @"设置";
+    model3.title = @"Set up";
     
     [tempDatas addObjectsFromArray:@[model1, model2, model3]];
     return tempDatas;

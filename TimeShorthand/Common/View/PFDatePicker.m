@@ -127,7 +127,7 @@
         //左边的取消按钮
         _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _cancelButton.frame = CGRectMake(AUTO_FIT(kGallopItemMargin), 0, UPVIEW_H, UPVIEW_H);
-        [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+        [_cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
         _cancelButton.backgroundColor = [UIColor clearColor];
         _cancelButton.titleLabel.font = [UIFont pf_fontWithName:@"PingFangSC-Medium" size:16];
         [_cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -137,7 +137,7 @@
         //右边的确定按钮
         _chooseButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _chooseButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - UPVIEW_H - AUTO_FIT(kGallopItemMargin), 0, UPVIEW_H, UPVIEW_H);
-        [_chooseButton setTitle:@"确定" forState:UIControlStateNormal];
+        [_chooseButton setTitle:@"Sure" forState:UIControlStateNormal];
         [_chooseButton setTitleColor:COLOUR_YELLOW forState:UIControlStateNormal];
         _chooseButton.backgroundColor = [UIColor clearColor];
         _chooseButton.titleLabel.font = [UIFont pf_fontWithName:@"PingFangSC-Medium" size:16];        [_chooseButton addTarget:self action:@selector(configButtonClick) forControlEvents:UIControlEventTouchUpInside];
@@ -341,15 +341,15 @@
     } else if (self.pickerViewMode == PFDatePickerViewDateMode) {
         switch (component) {
             case 0: {
-                label.text=[NSString stringWithFormat:@"%ld年",(long)(_startYear + row)];
+                label.text=[NSString stringWithFormat:@"%ldYear",(long)(_startYear + row)];
             }
                 break;
             case 1: {
-                label.text=[NSString stringWithFormat:@"%ld月",(long)row+1];
+                label.text=[NSString stringWithFormat:@"%ldMonth",(long)row+1];
             }
                 break;
             case 2: {
-                label.text=[NSString stringWithFormat:@"%ld日",(long)row+1];
+                label.text=[NSString stringWithFormat:@"%ldDay",(long)row+1];
             }
                 break;
                 

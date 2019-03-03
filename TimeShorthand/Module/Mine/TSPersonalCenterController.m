@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"个人中心";
+    self.title = @"Personal Center";
     [self.tableView registerNib:[UINib nibWithNibName:@"TSPersonalCenterCell" bundle:nil] forCellReuseIdentifier:TSPersonalCenterCell.identifer];
     [self.tableView registerNib:[UINib nibWithNibName:@"TSPersonalCenterCell" bundle:nil] forCellReuseIdentifier:@"header"];
 }
@@ -53,7 +53,7 @@
                 return;
             }
             // 存储成功
-            [LHHudTool showSuccessWithMessage:@"保存成功"];
+            [LHHudTool showSuccessWithMessage:@"Save success"];
             TSCommonModel *model = self.datas.firstObject;
             model.imagename = file.url;
             [self.tableView reloadRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] withRowAnimation:UITableViewRowAnimationNone];
@@ -107,9 +107,9 @@
                 nav.supportRotation = manager.configuration.supportRotation;
                 [weakSelf presentViewController:nav animated:YES completion:nil];
             }else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSBundle hx_localizedStringForKey:@"无法使用相机"] message:[NSBundle hx_localizedStringForKey:@"请在设置-隐私-相机中允许访问相机"] preferredStyle:UIAlertControllerStyleAlert];
-                [alert addAction:[UIAlertAction actionWithTitle:[NSBundle hx_localizedStringForKey:@"取消"] style:UIAlertActionStyleDefault handler:nil]];
-                [alert addAction:[UIAlertAction actionWithTitle:[NSBundle hx_localizedStringForKey:@"设置"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSBundle hx_localizedStringForKey:@"Cannot use camera"] message:[NSBundle hx_localizedStringForKey:@"Please allow access to the camera in Settings-Privacy-Camera"] preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:[NSBundle hx_localizedStringForKey:@"Cacel"] style:UIAlertActionStyleDefault handler:nil]];
+                [alert addAction:[UIAlertAction actionWithTitle:[NSBundle hx_localizedStringForKey:@"Set up"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
                 }]];
                 [weakSelf presentViewController:alert animated:YES completion:nil];
@@ -198,7 +198,7 @@
                 default:
                     break;
             }
-        } cancelTitle:@"取消" otherTitles:@"相册", @"拍照", nil] show];
+        } cancelTitle:@"Cancel" otherTitles:@"Album", @"Photograph", nil] show];
     };
     return cell;
 }
@@ -223,10 +223,10 @@
     
     TSCommonModel *model1 = [TSCommonModel new];
     model1.imagename = user.headUrl?:@"123";
-    model1.title = @"头像";
+    model1.title = @"Head";
     
     TSCommonModel *model2 = [TSCommonModel new];
-    model2.title = @"昵称";
+    model2.title = @"Nickname";
     model2.subTitle = user.name;
     
 //    TSCommonModel *model3 = [TSCommonModel new];
@@ -236,11 +236,11 @@
     NSDateFormatter *df = [TSDateTool dateFormatter];
     df.dateFormat = @"yyyy-MM-dd";
     TSCommonModel *model4 = [TSCommonModel new];
-    model4.title = @"出生日期";
+    model4.title = @"Birth";
     model4.subTitle = [df stringFromDate:[NSDate dateWithTimeIntervalSince1970:user.birthday.integerValue]];
     
     TSCommonModel *model5 = [TSCommonModel new];
-    model5.title = @"寿命预测";
+    model5.title = @"Life prediction";
     model5.subTitle = user.life;
     
     [tempDatas addObjectsFromArray:@[model1, model2, model4, model5]];

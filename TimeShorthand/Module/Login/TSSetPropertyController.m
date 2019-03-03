@@ -70,18 +70,19 @@
 
 - (void)setupInit {
     NSDateFormatter *dateFormatter = [TSDateTool dateFormatter];
-    dateFormatter.dateFormat = @"yyyy年MM月dd日";
+    dateFormatter.dateFormat = @"yyyy/MM/dd";
     self.timeLabel.text = [dateFormatter stringFromDate:[NSDate date]];
     self.nameTextField.text = TSUserTool.sharedInstance.user.name;
     self.lifeTextField.text = TSUserTool.sharedInstance.user.life;
 }
 
 - (IBAction)onTouchBirthDay:(id)sender {
-    [PFDatePicker showWithDate:nil title:@"设置生日" mode:PFDatePickerViewDateMode complete:^(NSString *dateStr) {
+    [self.view endEditing:YES];
+    [PFDatePicker showWithDate:nil title:@"Set birthday" mode:PFDatePickerViewDateMode complete:^(NSString *dateStr) {
         NSDateFormatter *dateFormatter = [TSDateTool dateFormatter];
         dateFormatter.dateFormat = @"yyyy-MM-dd";
         NSDate *selectDate = [dateFormatter dateFromString:dateStr];
-        dateFormatter.dateFormat = @"yyyy年MM月dd日";
+        dateFormatter.dateFormat = @"yyyy/MM/dd";
         NSString *newDateStr = [dateFormatter stringFromDate:selectDate];
         self.timeLabel.text = newDateStr;
     }];
@@ -94,13 +95,13 @@
 - (IBAction)onTouchCompleteButton:(id)sender {
     [self.view endEditing:YES];
     if (!_nameTextField.text.length) {
-        [LHHudTool showErrorWithMessage:@"请输入昵称!"];
+        [LHHudTool showErrorWithMessage:@"Please enter your nickname!"];
         return;
     } else if (!_timeLabel.text.length) {
-        [LHHudTool showErrorWithMessage:@"请选择生日!"];
+        [LHHudTool showErrorWithMessage:@"Please choose your birthday!"];
         return;
     } else if (!_lifeTextField.text.length) {
-        [LHHudTool showErrorWithMessage:@"请输入寿命!"];
+        [LHHudTool showErrorWithMessage:@"Please enter life!"];
         return;
     }
     [LHHudTool showLoading];
@@ -108,7 +109,7 @@
     
     
     NSDateFormatter *dateFormatter = [TSDateTool dateFormatter];
-    dateFormatter.dateFormat = @"yyyy年MM月dd日";
+    dateFormatter.dateFormat = @"yyyy/MM/dd";
     NSTimeInterval time = [[dateFormatter dateFromString:self.timeLabel.text] timeIntervalSince1970];
     
     TSUser *user = [TSUserTool sharedInstance].user;
@@ -126,7 +127,7 @@
             return;
         }
         // 存储成功
-        [LHHudTool showSuccessWithMessage:@"保存成功"];
+        [LHHudTool showSuccessWithMessage:@"Save success"];
         [self didClickComplete];
     }];
 }

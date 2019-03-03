@@ -25,23 +25,26 @@ static TSUserTool  *_userTool = nil;
 }
 
 + (void)loginWithUsername:(NSString *)username password:(NSString *)password complete:(PFErrorBlock)complete {
+    [AVUser logInWithUsernameInBackground:username password:password block:^(AVUser * _Nullable user, NSError * _Nullable error) {
+        if (error) {
+            SAFE_BLOCK(complete, error);
+            return ;
+        }
+        [TSUserTool sharedInstance].user = [[TSUser alloc] initWithAVUser:user];
+        SAFE_BLOCK(complete, nil);
+    }];
+}
+
++ (void)registerWithUsername:(NSString *)username password:(NSString *)password complete:(PFErrorBlock)complete {
     AVUser *user = [AVUser user];
     user.username = username;
     user.password = password;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (error && error.code != 202) {
+        if (error) {
             SAFE_BLOCK(complete, error);
             return ;
         }
-        /// 已注册
-        [AVUser logInWithUsernameInBackground:username password:password block:^(AVUser * _Nullable user, NSError * _Nullable error) {
-            if (error) {
-                SAFE_BLOCK(complete, error);
-                return ;
-            }
-            [TSUserTool sharedInstance].user = [[TSUser alloc] initWithAVUser:user];
-            SAFE_BLOCK(complete, nil);
-        }];
+        SAFE_BLOCK(complete, nil);
     }];
 }
 

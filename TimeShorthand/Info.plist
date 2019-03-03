@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>time shorthand</string>
+	<string>Time shorthand</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -38,7 +38,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>4</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -76,10 +76,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>TimeShorthand Request for your camera</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>TimeShorthand请求获取您的媒体资料库便于您保存媒体资源</string>
+	<string>TimeShorthand Request access to your media database for your media resources</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>TimeShorthand请求获取您的媒体资料库便于您保存媒体资源</string>
+	<string>TimeShorthand Request access to your media database for your media resources</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

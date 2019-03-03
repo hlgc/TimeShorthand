@@ -55,7 +55,7 @@
     [self addSubview: titleLb];
     titleLb.font = [UIFont pf_fontWithName:@"PingFangSC-Regular" size:16];
     titleLb.textColor = COLOR_FONT_BLACK;
-    titleLb.text = @"消息开关";
+    titleLb.text = @"Message switch";
     [titleLb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(icon);
         make.left.mas_equalTo(icon.mas_right).offset(15);
@@ -65,7 +65,7 @@
     [self addSubview: statuLb];
     statuLb.font = [UIFont pf_fontWithName:@"PingFangSC-Light" size:14];
     statuLb.textColor = [UIColor redColor];
-    statuLb.text = @"已关闭";
+    statuLb.text = @"Closed";
     self.statuLb = statuLb;
     [statuLb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(icon);
@@ -76,7 +76,7 @@
     [self addSubview: remindLb];
     remindLb.font = [UIFont pf_fontWithName:@"PingFangSC-Light" size:12];
     remindLb.textColor = COLOR_FONT_GREY;
-    remindLb.text = @"如需关闭，请在系统【设置】通知进行修改";
+    remindLb.text = @"If you need to shut down, please make changes in the system [settings] notification.";
     self.remindLb = remindLb;
     [remindLb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(icon.mas_bottom).offset(15);
@@ -101,17 +101,17 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (settings.authorizationStatus == UNAuthorizationStatusDenied) {
                     // 没权限
-                    self.statuLb.text = @"已关闭";
+                    self.statuLb.text = @"Closed";
                     self.statuLb.textColor = [UIColor redColor];
-                    self.remindLb.text = @"如需打开，请在系统【设置】通知进行修改";
+                    self.remindLb.text = @"If you need to open it, please modify it in the System [Settings] Notification.";
                     self.closeArrowImageView.hidden = NO;
                     [self.statuLb mas_updateConstraints:^(MASConstraintMaker *make) {
                         make.right.mas_equalTo(-52);
                     }];
                 } else {
-                    self.statuLb.text = @"已开启";
+                    self.statuLb.text = @"Opened";
                     self.statuLb.textColor = COLOR_FONT_GREY;
-                    self.remindLb.text = @"如需关闭，请在系统【设置】通知进行修改";
+                    self.remindLb.text = @"If you need to shut down, please make changes in the system [settings] notification.";
                     self.closeArrowImageView.hidden = YES;
                     [self.statuLb mas_updateConstraints:^(MASConstraintMaker *make) {
                         make.right.mas_equalTo(-27);
@@ -130,9 +130,9 @@
     
     if (isEnable) {
         
-        self.statuLb.text = @"已开启";
+        self.statuLb.text = @"Opened";
         self.statuLb.textColor = COLOR_FONT_GREY;
-        self.remindLb.text = @"如需关闭，请在系统【设置】通知进行修改";
+        self.remindLb.text = @"If you need to shut down, please make changes in the system [settings] notification.";
         
         self.closeArrowImageView.hidden = YES;
         [self.statuLb mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -140,9 +140,9 @@
         }];
     } else {
         
-        self.statuLb.text = @"已关闭";
+        self.statuLb.text = @"Closed";
         self.statuLb.textColor = [UIColor redColor];;
-        self.remindLb.text = @"如需打开，请在系统【设置】通知进行修改";
+        self.remindLb.text = @"If you need to open it, please modify it in the System [Settings] Notification.";
         
         self.closeArrowImageView.hidden = NO;
         [self.statuLb mas_updateConstraints:^(MASConstraintMaker *make) {

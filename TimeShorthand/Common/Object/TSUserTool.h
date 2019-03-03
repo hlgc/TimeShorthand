@@ -19,6 +19,7 @@
 + (void)logOut;
 
 + (void)loginWithUsername:(NSString *)username password:(NSString *)password complete:(PFErrorBlock)complete;
++ (void)registerWithUsername:(NSString *)username password:(NSString *)password complete:(PFErrorBlock)complete;
 
 @end
 

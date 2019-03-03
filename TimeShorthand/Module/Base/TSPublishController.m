@@ -55,7 +55,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     cancelButton.titleLabel.font = [UIFont systemFontOfSize:16.0f];
     [cancelButton setTitleColor:[UIColor pf_colorWithHex:0x999999] forState:UIControlStateNormal];
-    [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(onTouchCancelClick:) forControlEvents:UIControlEventTouchUpInside];
     [cancelButton sizeToFit];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
@@ -64,7 +64,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     _publishButton = publishButton;
     publishButton.titleLabel.font = [UIFont systemFontOfSize:16.0f];
     [publishButton setTitleColor:[UIColor pf_colorWithHex:0x3F7332] forState:UIControlStateNormal];
-    [publishButton setTitle:@"发布" forState:UIControlStateNormal];
+    [publishButton setTitle:@"Release" forState:UIControlStateNormal];
     [publishButton addTarget:self action:@selector(onTouchPublishButton:) forControlEvents:UIControlEventTouchUpInside];
     [publishButton sizeToFit];
     publishButton.enabled = NO;
@@ -85,14 +85,14 @@ static const CGFloat kPhotoViewMargin = 20.0f;
 
 #pragma mark - Touch
 - (void)onTouchTimeButton:(UIButton *)button {
-    [PFDatePicker showWithDate:nil title:@"设置发布时间" mode:PFDatePickerViewDateMode complete:^(NSString *dateStr) {
+    [PFDatePicker showWithDate:nil title:@"Setting the release time" mode:PFDatePickerViewDateMode complete:^(NSString *dateStr) {
         NSDateFormatter *dateFormatter = [TSDateTool dateFormatter];
         dateFormatter.dateFormat = @"yyyy-MM-dd";
         NSDate *selectDate = [dateFormatter dateFromString:dateStr];
-        [dateFormatter setDateFormat:@"当前发布于 yyyy年MM月dd日"];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSString *newDateStr = [dateFormatter stringFromDate:selectDate];
         
-        [self.timeButton setTitle:newDateStr forState:UIControlStateNormal];
+        [self.timeButton setTitle:[NSString stringWithFormat:@"Currently published in %@", newDateStr] forState:UIControlStateNormal];
         [self.timeButton sizeToFit];
         [self.timeButton pf_layoutButtonWithEdgeInsetsStyle:PFButtonEdgeInsetsStyleRight imageTitleSpace:0];
     }];
@@ -104,7 +104,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
 
 - (void)onTouchPublishButton:(UIButton *)button {
     if (!_textView.textView.text.length) {
-        [LHHudTool showErrorWithMessage:@"请输入内容~"];
+        [LHHudTool showErrorWithMessage:@"Please enter the content~"];
         return;
     }
     [LHHudTool showLoading];
@@ -143,7 +143,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     [recollect setObject:self.images.copy forKey:@"images"];
     
     NSDateFormatter *df = [TSDateTool dateFormatter];
-    [df setDateFormat:@"当前发布于 yyyy年MM月dd日"];
+    [df setDateFormat:@"yyyy-MM-dd"];
     NSDate *selectDate = [df dateFromString:[_timeButton titleForState:UIControlStateNormal]];
     [recollect setObject:[NSString stringWithFormat:@"%.0f", [selectDate timeIntervalSince1970]] forKey:@"time"];
     [recollect setObject:[AVUser currentUser].username forKey:@"user"];
@@ -153,7 +153,8 @@ static const CGFloat kPhotoViewMargin = 20.0f;
             return;
         }
         // 存储成功
-        [LHHudTool showSuccessWithMessage:@"发布成功"];
+        [LHHudTool showSuccessWithMessage:@"Released success"];
+        SAFE_BLOCK(self.didPublishCompeleteBlock);
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
@@ -267,10 +268,10 @@ static const CGFloat kPhotoViewMargin = 20.0f;
 
 - (void)addTimeButton {
     NSDateFormatter *df = [TSDateTool dateFormatter];
-    [df setDateFormat:@"当前发布于 yyyy年MM月dd日"];
+    [df setDateFormat:@"yyyy-MM-dd"];
     _timeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    [_timeButton setTitle:[df stringFromDate:[NSDate new]] forState:UIControlStateNormal];
+    [_timeButton setTitle:[NSString stringWithFormat:@"Currently published in %@", [df stringFromDate:[NSDate new]]] forState:UIControlStateNormal];
     [_timeButton setImage:[UIImage imageNamed:@"arrow"] forState:UIControlStateNormal];
     [_timeButton setTitleColor:[UIColor pf_colorWithHex:0x666666] forState:UIControlStateNormal];
     [_timeButton addTarget:self action:@selector(onTouchTimeButton:) forControlEvents:UIControlEventTouchUpInside];

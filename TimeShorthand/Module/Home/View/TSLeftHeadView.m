@@ -30,7 +30,7 @@
 - (void)loadData {
     TSUser *user = TSUserTool.sharedInstance.user;
     _username.text = user.name;
-    _subname.text = user.birthday;
+    _subname.text = user.username;
     
     [_headImage sd_setImageWithURL:[NSURL URLWithString:user.headUrl] placeholderImage:[UIImage imageNamed:@"icon-1024"]];
 }

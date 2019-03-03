@@ -81,7 +81,7 @@
     NSLog(@"用户年龄是%ld",userAge);
     
     _ageButton = [UILabel new];
-    _ageButton.text = [NSString stringWithFormat:@"你%.10f岁了",age];
+    _ageButton.text = [NSString stringWithFormat:@"You are %.10f years old.",age];
     _ageButton.textColor = [UIColor blackColor];
     _ageButton.font = [UIFont pf_PingFangSC_RegularWithSize:18.0f];
     [self.view addSubview:_ageButton];
@@ -215,7 +215,7 @@
     NSString *dateStr = [df stringFromDate:[NSDate dateWithTimeIntervalSince1970:TSUserTool.sharedInstance.user.birthday.integerValue]];
     NSTimeInterval dateDiff = [[df dateFromString:dateStr] timeIntervalSinceNow];
     double age = fabs(dateDiff / (60 * 60 * 24)) / 365;
-    _ageButton.text = [NSString stringWithFormat:@"你%.10f岁了",age];
+    _ageButton.text = [NSString stringWithFormat:@"You are %.10f years old.",age];
 }
 
 - (void)setDate {
@@ -253,8 +253,8 @@
 
 - (void)savePhotoToAlbum {
     //保存图片到本地
-    [LHHudTool showLoadingWithMessage:@"保存中"];
-    [TSTools savePhotoToCustomAlbumWithName:@"小灯塔" photo:[self createShareImage] saveBlock:^(int code, NSString *message) {
+    [LHHudTool showLoadingWithMessage:@"Saving"];
+    [TSTools savePhotoToCustomAlbumWithName:@"TimeShorthand" photo:[self createShareImage] saveBlock:^(int code, NSString *message) {
         [LHHudTool hideHUD];
         if (code == 200) {
             [LHHudTool showSuccessWithMessage:message];
@@ -275,7 +275,7 @@
     }
     CGFloat W = (ScreenWidth - 40) / 3;
     CGFloat H = W * .45f;
-    NSArray *tempDatas = @[@"年",@"月",@"周",@"日",@"时",@"分"];
+    NSArray *tempDatas = @[@"Year",@"Month",@"Week",@"Day",@"Hour",@"Minute"];
     NSMutableArray *tempDates = @[].mutableCopy;
     [tempDatas enumerateObjectsUsingBlock:^(NSString *string, NSUInteger idx, BOOL * _Nonnull stop) {
         TSHomeDateView *dateView = [TSHomeDateView new];
@@ -295,17 +295,17 @@
     CGFloat W = (ScreenWidth - 40) / 2;
     NSInteger count = TSUserTool.sharedInstance.user.surplusLife;
     TSEventModel *model1 = [TSEventModel new];
-    model1.name = [NSString stringWithFormat:@"睡觉 %zd次", count];
+    model1.name = [NSString stringWithFormat:@"Sleep %zd Second", count];
     model1.selected = YES;
     
     TSEventModel *model2 = [TSEventModel new];
-    model2.name = [NSString stringWithFormat:@"洗澡 %zd次", count];
+    model2.name = [NSString stringWithFormat:@"Bathe %zdSecond", count];
     
     TSEventModel *model3 = [TSEventModel new];
-    model3.name = [NSString stringWithFormat:@"旅行 %zd次", count/182];
+    model3.name = [NSString stringWithFormat:@"Travel %zdSecond", count/182];
     
     TSEventModel *model4 = [TSEventModel new];
-    model4.name = [NSString stringWithFormat:@"看书 %zd次", count];
+    model4.name = [NSString stringWithFormat:@"Read Book %zdSecond", count];
     
     NSArray *tempDatas = @[model1,model2,model3,model4];
     NSMutableArray *tempDates = @[].mutableCopy;

@@ -164,6 +164,14 @@
 		C5816955222547480038FB09 /* TSRecollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5816954222547480038FB09 /* TSRecollectModel.m */; };
 		C5816958222635D90038FB09 /* TSSettingLoginoutHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5816957222635D90038FB09 /* TSSettingLoginoutHeaderView.m */; };
 		C581695A222635FA0038FB09 /* TSSettingLoginoutHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5816959222635FA0038FB09 /* TSSettingLoginoutHeaderView.xib */; };
+		C5D68ECE222B732700ED11D9 /* TSLoginContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D68ECD222B732700ED11D9 /* TSLoginContentView.m */; };
+		C5D68ED2222BAF6500ED11D9 /* TSRecollectDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D68ED0222BAF6500ED11D9 /* TSRecollectDetailController.m */; };
+		C5D68ED3222BAF6500ED11D9 /* TSRecollectDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D68ED1222BAF6500ED11D9 /* TSRecollectDetailController.xib */; };
+		C5D68ED6222BB56100ED11D9 /* TSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D68ED5222BB56100ED11D9 /* TSCollectionViewCell.m */; };
+		C5D68ED9222BB5B900ED11D9 /* TSRecollectDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D68ED8222BB5B900ED11D9 /* TSRecollectDetailCell.m */; };
+		C5D68EDB222BB60B00ED11D9 /* TSRecollectDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D68EDA222BB60B00ED11D9 /* TSRecollectDetailCell.xib */; };
+		C5D68EDF222BB90600ED11D9 /* PFBannerLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D68EDD222BB90600ED11D9 /* PFBannerLayout.m */; };
+		C5D68EE2222BC0D400ED11D9 /* TSWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D68EE1222BC0D400ED11D9 /* TSWebController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -488,6 +496,20 @@
 		C5816956222635D90038FB09 /* TSSettingLoginoutHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSSettingLoginoutHeaderView.h; sourceTree = "<group>"; };
 		C5816957222635D90038FB09 /* TSSettingLoginoutHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSSettingLoginoutHeaderView.m; sourceTree = "<group>"; };
 		C5816959222635FA0038FB09 /* TSSettingLoginoutHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSSettingLoginoutHeaderView.xib; sourceTree = "<group>"; };
+		C5D68ECC222B732700ED11D9 /* TSLoginContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSLoginContentView.h; sourceTree = "<group>"; };
+		C5D68ECD222B732700ED11D9 /* TSLoginContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSLoginContentView.m; sourceTree = "<group>"; };
+		C5D68ECF222BAF6500ED11D9 /* TSRecollectDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSRecollectDetailController.h; sourceTree = "<group>"; };
+		C5D68ED0222BAF6500ED11D9 /* TSRecollectDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSRecollectDetailController.m; sourceTree = "<group>"; };
+		C5D68ED1222BAF6500ED11D9 /* TSRecollectDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSRecollectDetailController.xib; sourceTree = "<group>"; };
+		C5D68ED4222BB56100ED11D9 /* TSCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSCollectionViewCell.h; sourceTree = "<group>"; };
+		C5D68ED5222BB56100ED11D9 /* TSCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSCollectionViewCell.m; sourceTree = "<group>"; };
+		C5D68ED7222BB5B900ED11D9 /* TSRecollectDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSRecollectDetailCell.h; sourceTree = "<group>"; };
+		C5D68ED8222BB5B900ED11D9 /* TSRecollectDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSRecollectDetailCell.m; sourceTree = "<group>"; };
+		C5D68EDA222BB60B00ED11D9 /* TSRecollectDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSRecollectDetailCell.xib; sourceTree = "<group>"; };
+		C5D68EDD222BB90600ED11D9 /* PFBannerLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFBannerLayout.m; sourceTree = "<group>"; };
+		C5D68EDE222BB90600ED11D9 /* PFBannerLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFBannerLayout.h; sourceTree = "<group>"; };
+		C5D68EE0222BC0D300ED11D9 /* TSWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSWebController.h; sourceTree = "<group>"; };
+		C5D68EE1222BC0D400ED11D9 /* TSWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSWebController.m; sourceTree = "<group>"; };
 		DDC7019C7DBAA90C1FBED7A1 /* Pods-TimeShorthand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeShorthand.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand.release.xcconfig"; sourceTree = "<group>"; };
 		E9BB8888A0B538727A35A69E /* libPods-TimeShorthand.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeShorthand.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B83A6D358BD21602EF6014 /* Pods-TimeShorthand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeShorthand.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand.debug.xcconfig"; sourceTree = "<group>"; };
@@ -565,6 +587,9 @@
 		C51CA0A121D717FD0077524E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				C5D68EE0222BC0D300ED11D9 /* TSWebController.h */,
+				C5D68EE1222BC0D400ED11D9 /* TSWebController.m */,
+				C5D68EDC222BB8F800ED11D9 /* Object */,
 				C51CA0BA21D751100077524E /* View */,
 				C51CA0A421D718210077524E /* TSViewController.h */,
 				C51CA0A521D718210077524E /* TSViewController.m */,
@@ -617,6 +642,8 @@
 				C563F29A221FF12500E17118 /* TSTableViewHeaderFooterView.m */,
 				C5816949222535CE0038FB09 /* TSPublishTextView.h */,
 				C581694A222535CE0038FB09 /* TSPublishTextView.m */,
+				C5D68ED4222BB56100ED11D9 /* TSCollectionViewCell.h */,
+				C5D68ED5222BB56100ED11D9 /* TSCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -974,6 +1001,9 @@
 				C581693C22252A080038FB09 /* View */,
 				C563F2FC2223C36700E17118 /* TSRecollectController.h */,
 				C563F2FD2223C36700E17118 /* TSRecollectController.m */,
+				C5D68ECF222BAF6500ED11D9 /* TSRecollectDetailController.h */,
+				C5D68ED0222BAF6500ED11D9 /* TSRecollectDetailController.m */,
+				C5D68ED1222BAF6500ED11D9 /* TSRecollectDetailController.xib */,
 			);
 			path = Recollect;
 			sourceTree = "<group>";
@@ -998,6 +1028,8 @@
 			children = (
 				C563F3012223C9D000E17118 /* TSLoginTextField.h */,
 				C563F3022223C9D000E17118 /* TSLoginTextField.m */,
+				C5D68ECC222B732700ED11D9 /* TSLoginContentView.h */,
+				C5D68ECD222B732700ED11D9 /* TSLoginContentView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1143,6 +1175,9 @@
 				C581694122252BFF0038FB09 /* TSRecollectCell.h */,
 				C581694222252BFF0038FB09 /* TSRecollectCell.m */,
 				C581694322252BFF0038FB09 /* TSRecollectCell.xib */,
+				C5D68ED7222BB5B900ED11D9 /* TSRecollectDetailCell.h */,
+				C5D68ED8222BB5B900ED11D9 /* TSRecollectDetailCell.m */,
+				C5D68EDA222BB60B00ED11D9 /* TSRecollectDetailCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1154,6 +1189,15 @@
 				C5816954222547480038FB09 /* TSRecollectModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C5D68EDC222BB8F800ED11D9 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				C5D68EDE222BB90600ED11D9 /* PFBannerLayout.h */,
+				C5D68EDD222BB90600ED11D9 /* PFBannerLayout.m */,
+			);
+			path = Object;
 			sourceTree = "<group>";
 		};
 		E6AA44325514A3BBBA4B1C9C /* Pods */ = {
@@ -1278,6 +1322,7 @@
 				C563F273221EEFC800E17118 /* xl_clock_minuteHand_shadow.png in Resources */,
 				C563F271221EEFC800E17118 /* xl_clock_hourHand.png in Resources */,
 				C563F278221EEFC800E17118 /* xl_clock_minuteHand.png in Resources */,
+				C5D68EDB222BB60B00ED11D9 /* TSRecollectDetailCell.xib in Resources */,
 				C581694522252BFF0038FB09 /* TSRecollectCell.xib in Resources */,
 				C5816937222522240038FB09 /* HXPhotoPicker.bundle in Resources */,
 				C563F292221FE9B400E17118 /* TSLeftHeadView.xib in Resources */,
@@ -1291,6 +1336,7 @@
 				C563F274221EEFC800E17118 /* xl_clock_back.png in Resources */,
 				C563F275221EEFC800E17118 /* xl_clock_secondHand.png in Resources */,
 				C563F261221EEFC800E17118 /* pop-tvos-Info.plist in Resources */,
+				C5D68ED3222BAF6500ED11D9 /* TSRecollectDetailController.xib in Resources */,
 				C563F2E32221994B00E17118 /* icon-1024.png in Resources */,
 				C563F272221EEFC800E17118 /* xl_clock_secondHand_shadow.png in Resources */,
 				C563F284221EF75900E17118 /* xl_clock_hour_9.png in Resources */,
@@ -1376,6 +1422,7 @@
 				C563F270221EEFC800E17118 /* XLClockHand.m in Sources */,
 				C5816918222522240038FB09 /* UIViewController+HXExtension.m in Sources */,
 				C5816951222536A10038FB09 /* LHPhotoManager.m in Sources */,
+				C5D68ED2222BAF6500ED11D9 /* TSRecollectDetailController.m in Sources */,
 				C58168A622250BA20038FB09 /* TSEventModel.m in Sources */,
 				C563F30F2223CECF00E17118 /* TSUserTool.m in Sources */,
 				C5816924222522240038FB09 /* HXPhotoModel.m in Sources */,
@@ -1408,6 +1455,7 @@
 				C51CA0DD21D755320077524E /* NSString+PFExtension.m in Sources */,
 				C581691C222522240038FB09 /* UIFont+HXExtension.m in Sources */,
 				C5816933222522240038FB09 /* HXPhotoSubViewCell.m in Sources */,
+				C5D68ED6222BB56100ED11D9 /* TSCollectionViewCell.m in Sources */,
 				C51CA0D521D755320077524E /* NSDate+PFExtension.m in Sources */,
 				C5816920222522240038FB09 /* NSTimer+HXExtension.m in Sources */,
 				C563F25D221EEFC800E17118 /* POPSpringAnimation.mm in Sources */,
@@ -1419,6 +1467,7 @@
 				C581689C2224E8CE0038FB09 /* TSEventListController.m in Sources */,
 				C5816927222522240038FB09 /* HXPhotoCustomNavigationBar.m in Sources */,
 				C563F28A221FA47700E17118 /* TSView.m in Sources */,
+				C5D68ECE222B732700ED11D9 /* TSLoginContentView.m in Sources */,
 				C51CA0DC21D755320077524E /* UIFont+PFExtension.m in Sources */,
 				C5816938222522240038FB09 /* HXCircleProgressView.m in Sources */,
 				C5816917222522240038FB09 /* NSString+HXExtension.m in Sources */,
@@ -1436,6 +1485,7 @@
 				C581692E222522240038FB09 /* HXCustomCollectionReusableView.m in Sources */,
 				C5816936222522240038FB09 /* HXCustomPreviewView.m in Sources */,
 				C581691F222522240038FB09 /* NSDate+HXExtension.m in Sources */,
+				C5D68EE2222BC0D400ED11D9 /* TSWebController.m in Sources */,
 				C5816955222547480038FB09 /* TSRecollectModel.m in Sources */,
 				C5816928222522240038FB09 /* HXPhotoPreviewViewController.m in Sources */,
 				C563F265221EEFC800E17118 /* POPAnimation.mm in Sources */,
@@ -1456,6 +1506,7 @@
 				C581691B222522240038FB09 /* UIImageView+HXExtension.m in Sources */,
 				C563F2E622219BF000E17118 /* TSTools.m in Sources */,
 				C5816929222522240038FB09 /* HXPhotoTools.m in Sources */,
+				C5D68EDF222BB90600ED11D9 /* PFBannerLayout.m in Sources */,
 				C563F2A922214CE800E17118 /* TSShareView.m in Sources */,
 				C51CA0BD21D751250077524E /* TSTableViewCell.m in Sources */,
 				C563F29B221FF12500E17118 /* TSTableViewHeaderFooterView.m in Sources */,
@@ -1478,6 +1529,7 @@
 				C5816932222522240038FB09 /* HXCustomNavigationController.m in Sources */,
 				C5816921222522240038FB09 /* UIButton+HXExtension.m in Sources */,
 				C58168A02224ECFF0038FB09 /* TSEventListCell.m in Sources */,
+				C5D68ED9222BB5B900ED11D9 /* TSRecollectDetailCell.m in Sources */,
 				C563F25F221EEFC800E17118 /* POPAnimationTracer.mm in Sources */,
 				C5816914222522240038FB09 /* HXPhotoViewPresentTransition.m in Sources */,
 				C563F269221EEFC800E17118 /* POPAnimator.mm in Sources */,

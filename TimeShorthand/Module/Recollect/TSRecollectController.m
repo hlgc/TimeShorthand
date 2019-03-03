@@ -12,6 +12,7 @@
 #import "TSRecollectCell.h"
 #import "TSPublishController.h"
 #import "TSDateTool.h"
+#import "TSRecollectDetailController.h"
 
 @interface TSRecollectController ()
 
@@ -90,7 +91,11 @@
 
 #pragma mark - Touch
 - (void)onTouchAdd {
-    [self presentViewController:[[TSNavigationController alloc] initWithRootViewController:[TSPublishController new]] animated:YES completion:nil];
+    TSPublishController *v = [TSPublishController new];
+    v.didPublishCompeleteBlock = ^{
+        [self beginRefreshing];
+    };
+    [self presentViewController:[[TSNavigationController alloc] initWithRootViewController:v] animated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -107,7 +112,22 @@
     NSMutableArray *array = self.dict.allValues[indexPath.section];
     TSRecollectCell *cell = [tableView dequeueReusableCellWithIdentifier:TSRecollectCell.identifer];
     cell.model = array[indexPath.row];
+    LHWeakSelf
+    cell.didClickSelfBlock = ^{
+        [weakSelf tableView:tableView didSelectRowAtIndexPath:indexPath];
+    };
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *array = self.dict.allValues[indexPath.section];
+    TSRecollectModel *model = array[indexPath.row];
+    if (!model.content) {
+        return;
+    }
+    TSRecollectDetailController *detailVc = [TSRecollectDetailController new];
+    detailVc.model = model;
+    [self.navigationController pushViewController:detailVc animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -128,7 +148,7 @@
 }
 
 - (void)setupInit {
-    self.title = @"回忆录";
+    self.title = @"Memoir";
 }
 
 
