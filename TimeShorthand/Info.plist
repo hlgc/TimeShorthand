@@ -38,7 +38,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>5</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -77,11 +77,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>TimeShorthand Request for your camera</string>
+	<string>TimeShorthand  Request to get your camera to take photos and upload your avatar for personal information display</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>TimeShorthand Request access to your media database for your media resources</string>
+	<string>TimeShorthand Request access to your media database to save media resources or upload avatars for personal information display</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>TimeShorthand Request access to your media database for your media resources</string>
+	<string>TimeShorthand Request access to your media database upload avatar for personal information display</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
