@@ -62,23 +62,23 @@
     
     NSInteger count = TSUserTool.sharedInstance.user.surplusLife;
     TSEventModel *model1 = [TSEventModel new];
-    model1.name = [NSString stringWithFormat:@"Sleep %zd Second", count];
+    model1.name = [NSString stringWithFormat:@"Sleep %zd times", count];
     model1.selected = YES;
     
     TSEventModel *model2 = [TSEventModel new];
-    model2.name = [NSString stringWithFormat:@"Bathe %zd Second", count];
+    model2.name = [NSString stringWithFormat:@"Bathing %zd times", count];
     
     TSEventModel *model3 = [TSEventModel new];
-    model3.name = [NSString stringWithFormat:@"Travel %zd Second", count/182];
+    model3.name = [NSString stringWithFormat:@"Travel %ld times", count/182]; // 半年一次
     
     TSEventModel *model4 = [TSEventModel new];
-    model4.name = [NSString stringWithFormat:@"Read Book %zd Second", count];
+    model4.name = [NSString stringWithFormat:@"ReadBook %zd times", count];
     
     TSEventModel *model5 = [TSEventModel new];
-    model5.name = [NSString stringWithFormat:@"Play Game %zd Second", count];
+    model5.name = [NSString stringWithFormat:@"PlayGame %zd times", count];
     
     TSEventModel *model6 = [TSEventModel new];
-    model6.name = [NSString stringWithFormat:@"Get Paid %zd Second", count / 30];
+    model6.name = [NSString stringWithFormat:@"GetPaid %ld times", count / 30]; // 30天一次
     
     [tempDatas addObjectsFromArray:@[model1, model2, model3, model4, model5, model6]];
     return tempDatas;

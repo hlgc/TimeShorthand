@@ -295,17 +295,17 @@
     CGFloat W = (ScreenWidth - 40) / 2;
     NSInteger count = TSUserTool.sharedInstance.user.surplusLife;
     TSEventModel *model1 = [TSEventModel new];
-    model1.name = [NSString stringWithFormat:@"Sleep %zd Second", count];
+    model1.name = [NSString stringWithFormat:@"Sleep %zd times", count];
     model1.selected = YES;
     
     TSEventModel *model2 = [TSEventModel new];
-    model2.name = [NSString stringWithFormat:@"Bathe %zdSecond", count];
+    model2.name = [NSString stringWithFormat:@"Bathe %zd times", count];
     
     TSEventModel *model3 = [TSEventModel new];
-    model3.name = [NSString stringWithFormat:@"Travel %zdSecond", count/182];
+    model3.name = [NSString stringWithFormat:@"Travel %ld times", count/182];
     
     TSEventModel *model4 = [TSEventModel new];
-    model4.name = [NSString stringWithFormat:@"Read Book %zdSecond", count];
+    model4.name = [NSString stringWithFormat:@"ReadBook %zd times", count];
     
     NSArray *tempDatas = @[model1,model2,model3,model4];
     NSMutableArray *tempDates = @[].mutableCopy;
