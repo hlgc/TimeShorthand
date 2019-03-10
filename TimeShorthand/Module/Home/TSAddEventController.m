@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"AddEvent";
+    self.title = @"Add Event";
     
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     cancelButton.titleLabel.font = [UIFont systemFontOfSize:16.0f];

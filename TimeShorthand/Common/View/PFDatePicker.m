@@ -15,7 +15,6 @@
 @interface PFDatePicker () <UIPickerViewDataSource, UIPickerViewDelegate> {
     NSInteger _yearRange;
     NSInteger _dayRange;
-    NSInteger _startYear;
     NSInteger _selectedYear;
     NSInteger _selectedMonth;
     NSInteger _selectedDay;
@@ -36,6 +35,8 @@
 @property (nonatomic, strong) UIView *contentV;
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) UILabel *titleL;
+
+@property (nonatomic, assign) NSInteger startYear;
 /**
  * 模式
  */
@@ -47,13 +48,14 @@
 
 @implementation PFDatePicker
 
-+ (void)showWithDate:(NSDate *)date title:(NSString *)title mode:(PFDatePickerViewMode)mode complete:(void(^)(NSString *dateStr))complete {
++ (void)showWithDate:(NSDate *)date startYear:(NSInteger)startYear title:(NSString *)title mode:(PFDatePickerViewMode)mode complete:(void(^)(NSString *dateStr))complete {
     PFDatePicker *picker = [PFDatePicker new];
     if (date) {
         picker.currentDate = date;
     } else {
         picker.currentDate = [NSDate date];
     }
+    picker.startYear = startYear;
     picker.pickerViewMode = mode;
     picker.complete = complete;
     picker.titleL.text = title;
@@ -62,19 +64,19 @@
 }
 
 + (void)showWithTitle:(NSString *)title mode:(PFDatePickerViewMode)mode complete:(void(^)(NSString *dateStr))complete {
-    [self showWithDate:[NSDate date] title:title mode:mode complete:complete];
+    [self showWithDate:[NSDate date] startYear:1900 title:title mode:mode complete:complete];
 }
 
 + (void)showWitMode:(PFDatePickerViewMode)mode complete:(void(^)(NSString *dateStr))complete {
-    [self showWithDate:[NSDate date] title:nil mode:mode complete:complete];
+    [self showWithDate:[NSDate date] startYear:1900 title:nil mode:mode complete:complete];
 }
 
 + (void)showWithDate:(NSDate *)date complete:(void(^)(NSString *dateStr))complete {
-    [self showWithDate:date title:nil mode:PFDatePickerViewDateTimeMode complete:complete];
+    [self showWithDate:date startYear:1900 title:nil mode:PFDatePickerViewDateTimeMode complete:complete];
 }
 
 + (void)showWitComplete:(void(^)(NSString *dateStr))complete {
-    [self showWithDate:[NSDate date] title:nil mode:PFDatePickerViewDateTimeMode complete:complete];
+    [self showWithDate:[NSDate date] startYear:1900 title:nil mode:PFDatePickerViewDateTimeMode complete:complete];
 }
 
 - (void)layoutSubviews {
@@ -161,8 +163,11 @@
         comps = [calendar0 components:unitFlags fromDate:[NSDate date]];
         NSInteger year=[comps year];
         
-        _startYear=1900;
-        _yearRange=year - 1900+1;
+        if (_startYear >= year) {
+            _yearRange = 100;
+        } else {
+            _yearRange = year - _startYear+1;
+        }
         [self setCurrentDate:[NSDate date]];
     }
     return self;

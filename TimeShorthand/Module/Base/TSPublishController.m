@@ -85,7 +85,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
 
 #pragma mark - Touch
 - (void)onTouchTimeButton:(UIButton *)button {
-    [PFDatePicker showWithDate:nil title:@"Setting the release time" mode:PFDatePickerViewDateMode complete:^(NSString *dateStr) {
+    [PFDatePicker showWithTitle:@"Setting the release time" mode:PFDatePickerViewDateMode complete:^(NSString *dateStr) {
         NSDateFormatter *dateFormatter = [TSDateTool dateFormatter];
         dateFormatter.dateFormat = @"yyyy-MM-dd";
         NSDate *selectDate = [dateFormatter dateFromString:dateStr];
@@ -144,7 +144,9 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     
     NSDateFormatter *df = [TSDateTool dateFormatter];
     [df setDateFormat:@"yyyy-MM-dd"];
-    NSDate *selectDate = [df dateFromString:[_timeButton titleForState:UIControlStateNormal]];
+    NSString *dateString = [_timeButton titleForState:UIControlStateNormal];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"Currently published in " withString:@""];
+    NSDate *selectDate = [df dateFromString:dateString];
     [recollect setObject:[NSString stringWithFormat:@"%.0f", [selectDate timeIntervalSince1970]] forKey:@"time"];
     [recollect setObject:[AVUser currentUser].username forKey:@"user"];
     [recollect saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

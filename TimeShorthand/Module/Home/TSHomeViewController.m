@@ -15,6 +15,7 @@
 #import "TSDateTool.h"
 #import "TSEventListController.h"
 #import "TSEventModel.h"
+#import "TSTargetController.h"
 
 @interface TSHomeViewController ()
 
@@ -194,7 +195,8 @@
 }
 
 - (void)onTouchTarget {
-    
+    TSTargetController *target = [TSTargetController new];
+    [self.navigationController pushViewController:target animated:YES];
 }
 
 - (void)onTouchShare {
@@ -255,22 +257,22 @@
     [self.dates enumerateObjectsUsingBlock:^(TSHomeDateView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         switch (idx) {
             case 0:
-                obj.titleLabel.text = [NSString stringWithFormat:@"%ld", age];
+                obj.titleLabel.text = [NSString stringWithFormat:@"%ld", ABS(age)];
                 break;
             case 1:
-                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", time / 60 / 60 / 24 / 30];
+                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", ABS(time / 60 / 60 / 24 / 30)];
                 break;
             case 2:
-                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", time / 60 / 60 / 24 / 7];
+                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", ABS(time / 60 / 60 / 24 / 7)];
                 break;
             case 3:
-                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", time / 60 / 60 / 24];
+                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", ABS(time / 60 / 60 / 24)];
                 break;
             case 4:
-                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", time / 60 / 60];
+                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", ABS(time / 60 / 60)];
                 break;
             case 5:
-                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", time / 60];
+                obj.titleLabel.text = [NSString stringWithFormat:@"%.0f", ABS(time / 60)];
                 break;
             default:
                 break;

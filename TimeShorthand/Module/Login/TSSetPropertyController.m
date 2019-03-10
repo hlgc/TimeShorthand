@@ -71,6 +71,9 @@
 - (void)setupInit {
     NSDateFormatter *dateFormatter = [TSDateTool dateFormatter];
     dateFormatter.dateFormat = @"yyyy/MM/dd";
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    dateFormatter.timeStyle = NSDateFormatterMediumStyle;
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     self.timeLabel.text = [dateFormatter stringFromDate:[NSDate date]];
     self.nameTextField.text = TSUserTool.sharedInstance.user.name;
     self.lifeTextField.text = TSUserTool.sharedInstance.user.life;
@@ -78,11 +81,14 @@
 
 - (IBAction)onTouchBirthDay:(id)sender {
     [self.view endEditing:YES];
-    [PFDatePicker showWithDate:nil title:@"Set birthday" mode:PFDatePickerViewDateMode complete:^(NSString *dateStr) {
+    [PFDatePicker showWithTitle:@"Set birthday" mode:PFDatePickerViewDateMode complete:^(NSString *dateStr) {
         NSDateFormatter *dateFormatter = [TSDateTool dateFormatter];
         dateFormatter.dateFormat = @"yyyy-MM-dd";
         NSDate *selectDate = [dateFormatter dateFromString:dateStr];
         dateFormatter.dateFormat = @"yyyy/MM/dd";
+        dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+        dateFormatter.timeStyle = NSDateFormatterMediumStyle;
+        dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
         NSString *newDateStr = [dateFormatter stringFromDate:selectDate];
         self.timeLabel.text = newDateStr;
     }];
@@ -110,6 +116,9 @@
     
     NSDateFormatter *dateFormatter = [TSDateTool dateFormatter];
     dateFormatter.dateFormat = @"yyyy/MM/dd";
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    dateFormatter.timeStyle = NSDateFormatterMediumStyle;
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     NSTimeInterval time = [[dateFormatter dateFromString:self.timeLabel.text] timeIntervalSince1970];
     
     TSUser *user = [TSUserTool sharedInstance].user;
@@ -126,6 +135,9 @@
             [LHHudTool showErrorWithMessage:error.localizedFailureReason ? : kServiceErrorString];
             return;
         }
+        NSString *imageDir = [TSTools getCurrentUserCacheFolderWithFolderName:@""];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        [fileManager removeItemAtPath:imageDir error:nil];
         // 存储成功
         [LHHudTool showSuccessWithMessage:@"Save success"];
         [self didClickComplete];

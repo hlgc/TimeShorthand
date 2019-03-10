@@ -13,6 +13,7 @@ typedef void(^LHSavePhotoBlock)( int code, NSString *message);
 @interface TSTools : NSObject
 
 + (void)savePhotoToCustomAlbumWithName:(NSString *)albumName photo:(UIImage *)photo saveBlock:(LHSavePhotoBlock)block;
++ (NSString *)getCacheFolder;
 + (NSString *)getCurrentUserCacheFolderWithFolderName:(NSString *)folderName;
     
 @end
