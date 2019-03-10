@@ -172,6 +172,8 @@
 		C5D68EDB222BB60B00ED11D9 /* TSRecollectDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D68EDA222BB60B00ED11D9 /* TSRecollectDetailCell.xib */; };
 		C5D68EDF222BB90600ED11D9 /* PFBannerLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D68EDD222BB90600ED11D9 /* PFBannerLayout.m */; };
 		C5D68EE2222BC0D400ED11D9 /* TSWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D68EE1222BC0D400ED11D9 /* TSWebController.m */; };
+		C5D710EC2234F6DC00A13FCA /* TSAddEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D710EA2234F6DC00A13FCA /* TSAddEventController.m */; };
+		C5D710ED2234F6DC00A13FCA /* TSAddEventController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D710EB2234F6DC00A13FCA /* TSAddEventController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -510,6 +512,9 @@
 		C5D68EDE222BB90600ED11D9 /* PFBannerLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFBannerLayout.h; sourceTree = "<group>"; };
 		C5D68EE0222BC0D300ED11D9 /* TSWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSWebController.h; sourceTree = "<group>"; };
 		C5D68EE1222BC0D400ED11D9 /* TSWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSWebController.m; sourceTree = "<group>"; };
+		C5D710E92234F6DC00A13FCA /* TSAddEventController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAddEventController.h; sourceTree = "<group>"; };
+		C5D710EA2234F6DC00A13FCA /* TSAddEventController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAddEventController.m; sourceTree = "<group>"; };
+		C5D710EB2234F6DC00A13FCA /* TSAddEventController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TSAddEventController.xib; sourceTree = "<group>"; };
 		DDC7019C7DBAA90C1FBED7A1 /* Pods-TimeShorthand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeShorthand.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand.release.xcconfig"; sourceTree = "<group>"; };
 		E9BB8888A0B538727A35A69E /* libPods-TimeShorthand.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeShorthand.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B83A6D358BD21602EF6014 /* Pods-TimeShorthand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeShorthand.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand.debug.xcconfig"; sourceTree = "<group>"; };
@@ -623,6 +628,9 @@
 				C51CA0AB21D718830077524E /* TSLeftViewController.m */,
 				C581689A2224E8CE0038FB09 /* TSEventListController.h */,
 				C581689B2224E8CE0038FB09 /* TSEventListController.m */,
+				C5D710E92234F6DC00A13FCA /* TSAddEventController.h */,
+				C5D710EA2234F6DC00A13FCA /* TSAddEventController.m */,
+				C5D710EB2234F6DC00A13FCA /* TSAddEventController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1339,6 +1347,7 @@
 				C5D68ED3222BAF6500ED11D9 /* TSRecollectDetailController.xib in Resources */,
 				C563F2E32221994B00E17118 /* icon-1024.png in Resources */,
 				C563F272221EEFC800E17118 /* xl_clock_secondHand_shadow.png in Resources */,
+				C5D710ED2234F6DC00A13FCA /* TSAddEventController.xib in Resources */,
 				C563F284221EF75900E17118 /* xl_clock_hour_9.png in Resources */,
 				C563F25B221EEFC800E17118 /* pop-ios-Info.plist in Resources */,
 				C563F263221EEFC800E17118 /* pop-osx-Info.plist in Resources */,
@@ -1423,6 +1432,7 @@
 				C5816918222522240038FB09 /* UIViewController+HXExtension.m in Sources */,
 				C5816951222536A10038FB09 /* LHPhotoManager.m in Sources */,
 				C5D68ED2222BAF6500ED11D9 /* TSRecollectDetailController.m in Sources */,
+				C5D710EC2234F6DC00A13FCA /* TSAddEventController.m in Sources */,
 				C58168A622250BA20038FB09 /* TSEventModel.m in Sources */,
 				C563F30F2223CECF00E17118 /* TSUserTool.m in Sources */,
 				C5816924222522240038FB09 /* HXPhotoModel.m in Sources */,

@@ -7,10 +7,11 @@
 //
 
 #import "TSTableViewController.h"
-
+@class TSEventModel;
 
 @interface TSEventListController : TSTableViewController
 
 @property (nonatomic, copy) void(^didCompleteBlcok) (id model);
+@property (nonatomic, strong) TSEventModel *s_model;
 
 @end

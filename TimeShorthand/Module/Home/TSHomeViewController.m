@@ -35,6 +35,10 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSTimer *dateTimer;
 
+///事件
+@property (nonatomic, strong) NSMutableArray *eventDatas;
+@property (nonatomic, copy) NSString *fileName;
+
 @end
 
 @implementation TSHomeViewController
@@ -181,11 +185,16 @@
 
 - (void)setupInit {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_menu"] style:UIBarButtonItemStylePlain target:self action:@selector(onTouchMenu)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share"] style:UIBarButtonItemStylePlain target:self action:@selector(onTouchShare)];
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"target"] style:UIBarButtonItemStylePlain target:self action:@selector(onTouchTarget)],
+                                                [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share"] style:UIBarButtonItemStylePlain target:self action:@selector(onTouchShare)]];
 }
 
 - (void)onTouchMenu {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (void)onTouchTarget {
+    
 }
 
 - (void)onTouchShare {
@@ -201,9 +210,27 @@
 /// 点击事件
 - (void)onTouchDateView:(UIButton *)button {
     TSEventListController *listVC = [TSEventListController new];
+    listVC.s_model = [self.eventDatas objectAtIndex:button.tag];
     listVC.didCompleteBlcok = ^(TSEventModel *model) {
-        [button setTitle:model.name forState:UIControlStateNormal];
-        [button pf_layoutButtonWithEdgeInsetsStyle:PFButtonEdgeInsetsStyleRight imageTitleSpace:.0f];
+        __block TSEventModel *smodel = nil;
+        [self.eventDatas enumerateObjectsUsingBlock:^(TSEventModel *modelobj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([modelobj.name isEqualToString:model.name]) {
+                smodel = modelobj;
+            }
+        }];
+        if (smodel) {
+            [self.eventDatas removeObject:smodel];
+        }
+        [self.eventDatas insertObject:model atIndex:0];
+        if (self.eventDatas.count > 4) {
+            [self.eventDatas removeLastObject];
+        }
+        [[self.eventDatas modelToJSONObject] writeToFile:self.fileName atomically:NO];
+        
+        [self.events enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [obj setTitle:((TSEventModel *)self.eventDatas[idx]).name forState:UIControlStateNormal];
+            [obj pf_layoutButtonWithEdgeInsetsStyle:PFButtonEdgeInsetsStyleRight imageTitleSpace:.0f];
+        }];
     };
     [self.navigationController pushViewController:listVC animated:YES];
 }
@@ -293,24 +320,36 @@
         return _events;
     }
     CGFloat W = (ScreenWidth - 40) / 2;
-    NSInteger count = TSUserTool.sharedInstance.user.surplusLife;
-    TSEventModel *model1 = [TSEventModel new];
-    model1.name = [NSString stringWithFormat:@"Sleep %zd times", count];
-    model1.selected = YES;
+    _fileName = [[TSTools getCurrentUserCacheFolderWithFolderName:@"events"] stringByAppendingString:@"/homeEventArr.plist"];
+    NSArray *homeEventArr = [NSArray arrayWithContentsOfFile:_fileName];
+    if (!homeEventArr) {
+        NSInteger count = TSUserTool.sharedInstance.user.surplusLife;
+        TSEventModel *model1 = [TSEventModel new];
+        model1.day = 1;
+        model1.name = [NSString stringWithFormat:@"Sleep %zd times", count / model1.day];
+        
+        TSEventModel *model2 = [TSEventModel new];
+        model2.day = 1;
+        model2.name = [NSString stringWithFormat:@"Bathe %zd times", count / model2.day];
+        
+        TSEventModel *model3 = [TSEventModel new];
+        model3.day = 180;
+        model3.name = [NSString stringWithFormat:@"Travel %ld times", count / model3.day];
+        
+        TSEventModel *model4 = [TSEventModel new];
+        model4.day = 1;
+        model4.name = [NSString stringWithFormat:@"ReadBook %zd times", count / model4.day];
+        
+        homeEventArr = @[[model1 modelToJSONObject], [model2 modelToJSONObject], [model3 modelToJSONObject], [model4 modelToJSONObject]];
+        [homeEventArr writeToFile:_fileName atomically:NO];
+    }
     
-    TSEventModel *model2 = [TSEventModel new];
-    model2.name = [NSString stringWithFormat:@"Bathe %zd times", count];
-    
-    TSEventModel *model3 = [TSEventModel new];
-    model3.name = [NSString stringWithFormat:@"Travel %ld times", count/182];
-    
-    TSEventModel *model4 = [TSEventModel new];
-    model4.name = [NSString stringWithFormat:@"ReadBook %zd times", count];
-    
-    NSArray *tempDatas = @[model1,model2,model3,model4];
+    NSArray *tempDatas = [NSArray modelArrayWithClass:TSEventModel.class json:homeEventArr];
+    self.eventDatas = tempDatas.mutableCopy;
     NSMutableArray *tempDates = @[].mutableCopy;
     [tempDatas enumerateObjectsUsingBlock:^(TSEventModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *dateView = [UIButton new];
+        dateView.tag = idx;
         dateView.titleLabel.font = [UIFont pf_PingFangSC_LightWithSize:14.0f];
         [dateView setTitleColor:COLOR_FONT_BLACK forState:UIControlStateNormal];
         [dateView setTitle:model.name forState:UIControlStateNormal];

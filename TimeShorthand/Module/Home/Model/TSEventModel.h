@@ -11,7 +11,8 @@
 @interface TSEventModel : NSObject
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, assign) NSInteger count;
+// 多久一次, 1 -> 每一天  30->每月一次  183->半年一次
+@property (nonatomic, assign) NSInteger day;
 @property (nonatomic, assign) BOOL selected;
 
 @end

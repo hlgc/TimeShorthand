@@ -10,4 +10,12 @@
 
 @implementation TSEventModel
 
+- (NSInteger)day {
+    if (_day) {
+        return _day;
+    }
+    _day = 1;
+    return _day;
+}
+    
 @end

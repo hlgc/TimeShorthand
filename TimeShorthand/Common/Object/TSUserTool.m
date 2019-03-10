@@ -7,6 +7,7 @@
 //
 
 #import "TSUserTool.h"
+#import "TSEventModel.h"
 
 static TSUserTool  *_userTool = nil;
 

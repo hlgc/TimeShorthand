@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimeShorthand/Module/Home/TSHomeViewController.m"
-            timestampString = "573618054.2112091"
+            timestampString = "573898747.5437191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "-savePhotoToAlbum"
             landmarkType = "7">
          </BreakpointContent>
@@ -36,28 +36,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimeShorthand/Common/Object/TSUserTool.m"
-            timestampString = "573288731.820925"
+            timestampString = "573894352.227846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "-user"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TimeShorthand/Module/Home/TSEventListController.m"
-            timestampString = "573618054.211503"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-datas"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -186,6 +170,22 @@
             startingLineNumber = "128"
             endingLineNumber = "128"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TimeShorthand/Module/Home/TSHomeViewController.m"
+            timestampString = "573898747.54474"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "-onTouchDateView:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

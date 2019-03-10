@@ -96,5 +96,26 @@
     
     return createCollection;
 }
+    
++ (NSString *)getCacheFolder {
+    return NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
+}
+    
++ (NSString *)getCurrentUserCacheFolderWithFolderName:(NSString *)folderName {
+    NSString *cacheFile = [self getCacheFolder];
+    NSString *dirPath = [cacheFile stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@/%@", [[NSBundle mainBundle] bundleIdentifier], [TSUserTool sharedInstance].user.username, folderName]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDir = false;
+    BOOL isDirExist = [fileManager fileExistsAtPath:dirPath isDirectory:&isDir];
+    if (!isDirExist) {
+        NSLog(@"Resource 文件夹不存在，需要创建文件夹！");
+        isDirExist = [fileManager createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    if (isDirExist) {
+        // NSLog(@"文件夹之前就存在或者文件夹这次创建成功都会返回文件全路径！");
+        return dirPath;
+    }
+    return nil;
+}
 
 @end
