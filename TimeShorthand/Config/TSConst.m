@@ -20,7 +20,7 @@ NSString *const kLocalDataKey = @"localData";
 NSString *const kJPushSDKAppKey = @"8e630d91bb57e3b22e3b12a4";
 BOOL const kJPushIsProduction = NO;
 
-NSString *const kServiceErrorString = @"服务器开小差了~";
+NSString *const kServiceErrorString = @"Server deserted~";
 NSInteger const kDefaultPageCount = 5;
 
 NSString * const kUIScrollViewDidChangeContentOffsetNotification = @"kUIScrollViewDidChangeContentOffsetNotification";

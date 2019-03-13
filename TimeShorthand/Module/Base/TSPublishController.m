@@ -45,6 +45,7 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     _textView.frame = CGRectMake(kGallopItemMargin, 15.0f, self.view.width - kGallopItemMargin * 2, textViewW * .46567f);
     
     [_timeButton sizeToFit];
+    _timeButton.width = ScreenWidth - kGallopItemMargin * 2;
     _timeButton.left = kGallopItemMargin;
     _timeButton.top = _textView.maxY + 20.0f;
     
@@ -90,6 +91,9 @@ static const CGFloat kPhotoViewMargin = 20.0f;
         dateFormatter.dateFormat = @"yyyy-MM-dd";
         NSDate *selectDate = [dateFormatter dateFromString:dateStr];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+        dateFormatter.timeStyle = NSDateFormatterMediumStyle;
+        dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
         NSString *newDateStr = [dateFormatter stringFromDate:selectDate];
         
         [self.timeButton setTitle:[NSString stringWithFormat:@"Currently published in %@", newDateStr] forState:UIControlStateNormal];
@@ -146,6 +150,9 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     [df setDateFormat:@"yyyy-MM-dd"];
     NSString *dateString = [_timeButton titleForState:UIControlStateNormal];
     dateString = [dateString stringByReplacingOccurrencesOfString:@"Currently published in " withString:@""];
+    df.dateStyle = NSDateFormatterMediumStyle;
+    df.timeStyle = NSDateFormatterMediumStyle;
+    df.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     NSDate *selectDate = [df dateFromString:dateString];
     [recollect setObject:[NSString stringWithFormat:@"%.0f", [selectDate timeIntervalSince1970]] forKey:@"time"];
     [recollect setObject:[AVUser currentUser].username forKey:@"user"];
@@ -272,7 +279,10 @@ static const CGFloat kPhotoViewMargin = 20.0f;
     NSDateFormatter *df = [TSDateTool dateFormatter];
     [df setDateFormat:@"yyyy-MM-dd"];
     _timeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
+    _timeButton.titleLabel.numberOfLines = 0;
+    df.dateStyle = NSDateFormatterMediumStyle;
+    df.timeStyle = NSDateFormatterMediumStyle;
+    df.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     [_timeButton setTitle:[NSString stringWithFormat:@"Currently published in %@", [df stringFromDate:[NSDate new]]] forState:UIControlStateNormal];
     [_timeButton setImage:[UIImage imageNamed:@"arrow"] forState:UIControlStateNormal];
     [_timeButton setTitleColor:[UIColor pf_colorWithHex:0x666666] forState:UIControlStateNormal];
