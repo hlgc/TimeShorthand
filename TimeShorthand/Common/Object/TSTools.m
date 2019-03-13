@@ -22,13 +22,13 @@
     // 判断授权状态
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
         if (status != PHAuthorizationStatusAuthorized) {
-            block(400, @"没有权限");
+            block(400, @"No authority");
             return;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!iOS9_Later) {
                 UIImageWriteToSavedPhotosAlbum(photo, nil, nil, nil);
-                block(200, @"保存成功");
+                block(200, @"Save success");
                 return;
             }
             NSError *error = nil;
@@ -41,14 +41,14 @@
             } error:&error];
             
             if (error) {
-                block(400, @"保存失败");
+                block(400, @"Failure to save");
                 return;
             }
             
             // 拿到自定义的相册对象
             PHAssetCollection *collection = [self createCollection:albumName];
             if (collection == nil) {
-                block(400, @"保存失败");
+                block(400, @"Failure to save");
                 return;
             }
             
@@ -57,9 +57,9 @@
             } error:&error];
             
             if (error) {
-                block(400, @"保存失败");
+                block(400, @"Failure to save");
             } else {
-                block(200, @"保存成功");
+                block(200, @"Save success");
             }
         });
     }];

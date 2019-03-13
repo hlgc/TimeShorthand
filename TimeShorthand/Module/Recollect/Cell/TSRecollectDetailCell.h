@@ -11,5 +11,6 @@
 @interface TSRecollectDetailCell : TSCollectionViewCell
 
 @property (nonatomic, copy) NSString *imageName;
+@property (weak, nonatomic, readonly) UIImageView *imageView;
 
 @end

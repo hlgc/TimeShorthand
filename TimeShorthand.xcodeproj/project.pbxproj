@@ -1417,7 +1417,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand-resources.sh",
 				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
@@ -1434,7 +1434,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TimeShorthand/Pods-TimeShorthand-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		0BEAE3355966190C7AFEA3A8 /* [CP] Check Pods Manifest.lock */ = {

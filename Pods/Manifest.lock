@@ -9,6 +9,7 @@ PODS:
     - AVOSCloudIM/_NOARC (= 11.4.4)
   - AVOSCloudIM/_NOARC (11.4.4):
     - AVOSCloud (= 11.4.4)
+  - CYLTabBarController (1.19.2)
   - IQKeyboardManager (6.2.0)
   - JCore (1.2.5)
   - JPush (3.1.1.1):
@@ -46,6 +47,7 @@ PODS:
 DEPENDENCIES:
   - AVOSCloud
   - AVOSCloudIM
+  - CYLTabBarController
   - IQKeyboardManager
   - JPush
   - Masonry
@@ -62,6 +64,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AVOSCloud
     - AVOSCloudIM
+    - CYLTabBarController
     - IQKeyboardManager
     - JCore
     - JPush
@@ -77,6 +80,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AVOSCloud: c3d6ce6d387d7e40c7c0fe4087c6ad5192620f47
   AVOSCloudIM: e3227ad97ee9d0f8ec059b0a17d8dc9c2ec0ba49
+  CYLTabBarController: 5b364d6be617331a07f3f3f0ea537f7950501042
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JCore: 14706de2640b25fb77dbd02332696491407f37c9
   JPush: 25dd9013fbe106082c14f9f30a82364ee98852fb
@@ -89,6 +93,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 53a3ad4a6b0fb45a3f5c24885152e60a582a727f
+PODFILE CHECKSUM: 8c12607d3971d797a8550e0a96b4d8f5016aa08d
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

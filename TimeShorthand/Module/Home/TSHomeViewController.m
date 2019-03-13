@@ -185,7 +185,7 @@
 }
 
 - (void)setupInit {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_menu"] style:UIBarButtonItemStylePlain target:self action:@selector(onTouchMenu)];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_menu"] style:UIBarButtonItemStylePlain target:self action:@selector(onTouchMenu)];
     self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"target"] style:UIBarButtonItemStylePlain target:self action:@selector(onTouchTarget)],
                                                 [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share"] style:UIBarButtonItemStylePlain target:self action:@selector(onTouchShare)]];
 }
@@ -195,8 +195,9 @@
 }
 
 - (void)onTouchTarget {
-    TSTargetController *target = [TSTargetController new];
-    [self.navigationController pushViewController:target animated:YES];
+    self.tabBarController.selectedIndex = 2;
+//    TSTargetController *target = [TSTargetController new];
+//    [self.navigationController pushViewController:target animated:YES];
 }
 
 - (void)onTouchShare {

@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TSRecollectDetailController">
             <connections>
                 <outlet property="collectionView" destination="zsT-de-vEK" id="lAs-hK-qNn"/>
+                <outlet property="testViewBottom" destination="MuO-EU-wNJ" id="ZdQ-lC-h5q"/>
                 <outlet property="textView" destination="k7B-cN-v4u" id="3Qs-wd-eCX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,10 +33,11 @@
                 </collectionView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k7B-cN-v4u">
                     <rect key="frame" x="0.0" y="539" width="375" height="128"/>
-                    <color key="backgroundColor" white="0.75" alpha="0.19689105308219179" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40092572773972601" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="128" id="Ed0-oX-Lsj"/>
                     </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>

@@ -44,6 +44,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [_headView loadData];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -68,22 +75,24 @@
                 break;
             }
             case 1: {
-                showVC = [TSRecollectController new];
-                break;
+                self.tabBarController.selectedIndex = 1;
+                return;
+//                showVC = [TSRecollectController new];
+//                break;
             }
             default: {
                 showVC = [TSSettingController new];
                 break;
             }
         }
-        
-        UINavigationController* nav = (UINavigationController*)self.mm_drawerController.centerViewController;
-        [nav pushViewController:showVC animated:NO];
-        //当我们push成功之后，关闭我们的抽屉
-        [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
-            //设置打开抽屉模式为MMOpenDrawerGestureModeNone，也就是没有任何效果。
-            [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
-        }];
+        [self.navigationController pushViewController:showVC animated:YES];
+//        UINavigationController* nav = (UINavigationController*)self.mm_drawerController.centerViewController;
+//        [nav pushViewController:showVC animated:NO];
+//        //当我们push成功之后，关闭我们的抽屉
+//        [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
+//            //设置打开抽屉模式为MMOpenDrawerGestureModeNone，也就是没有任何效果。
+//            [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+//        }];
     };
     return cell;
 }

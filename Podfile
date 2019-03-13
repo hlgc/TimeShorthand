@@ -27,4 +27,5 @@ target 'TimeShorthand' do
     pod 'AVOSCloudIM'             # 即时通讯模块
     
     pod 'IQKeyboardManager'
+    pod 'CYLTabBarController'
 end

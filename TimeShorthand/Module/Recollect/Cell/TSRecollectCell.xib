@@ -24,14 +24,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-1024.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nnj-Nw-qYf">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-1024.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nnj-Nw-qYf">
                         <rect key="frame" x="62" y="38" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="5jm-gx-Y6A"/>
                             <constraint firstAttribute="height" constant="50" id="uWd-ZR-Fp9"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZR3-yq-Tco">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZR3-yq-Tco">
                         <rect key="frame" x="127" y="15" width="231" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>

@@ -48,6 +48,11 @@
     [self headerRefreshing];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.headView loadData];
+}
+
 #pragma mark Load
 - (void)headerRefreshing {
     self.page = 0;
@@ -122,9 +127,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *array = self.dict.allValues[indexPath.section];
     TSRecollectModel *model = array[indexPath.row];
-    if (!model.content) {
-        return;
-    }
+//    if (!model.images.count) {
+//        return;
+//    }
     TSRecollectDetailController *detailVc = [TSRecollectDetailController new];
     detailVc.model = model;
     [self.navigationController pushViewController:detailVc animated:YES];

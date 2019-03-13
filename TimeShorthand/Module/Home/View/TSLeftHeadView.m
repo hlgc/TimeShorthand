@@ -7,7 +7,7 @@
 //
 
 #import "TSLeftHeadView.h"
-
+#import "TSPersonalCenterController.h"
 @interface TSLeftHeadView ()
 
 @property (weak, nonatomic) IBOutlet UIView *bgView;
@@ -25,6 +25,9 @@
     [self addShadowToView:self.bgView withColor:[UIColor blackColor]];
     
     
+    [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        [self.viewController.navigationController pushViewController:[TSPersonalCenterController new] animated:YES];
+    }]];
 }
 
 - (void)loadData {

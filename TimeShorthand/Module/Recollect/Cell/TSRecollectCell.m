@@ -25,10 +25,11 @@
     _model = model;
     
     NSDateFormatter *df = [TSDateTool dateFormatter];
-    [df setDateFormat:@"yyyy/MM/dd"];
+    [df setDateFormat:@"MMM-d"];
     NSString *dateStr = [df stringFromDate:[NSDate dateWithTimeIntervalSince1970:model.time.integerValue]];
-    NSString *month = [dateStr substringWithRange:NSMakeRange(5, 2)];
-    NSString *day = [dateStr substringWithRange:NSMakeRange(dateStr.length-2, 2)];
+    NSArray *dateArr = [dateStr componentsSeparatedByString:@"-"];
+    NSString *month = dateArr.firstObject;//[dateStr substringWithRange:NSMakeRange(5, 2)];
+    NSString *day = dateArr.lastObject;//[dateStr substringWithRange:NSMakeRange(dateStr.length-2, 2)];
     
     _dateLabel.attributedText = [[NSMutableAttributedString pf_makeAttributedString:month attributes:^(NSMutableDictionary *make) {
         make.pf_font([UIFont pf_PingFangSC_RegularWithSize:28]).pf_color(COLOR_FONT_BLACK);
